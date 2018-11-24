@@ -1,0 +1,27 @@
+' Gambas class file
+
+Static Public s As New String[]
+Static Public text As String
+Static Public Ort As New String[]
+Static Public ReadTunierNummer As Integer
+
+
+Static Public Sub add_Ort_list()
+  Ort.Add("Erfurt", 0)
+  Ort.Add("Jena_|_Roma", 1)
+  Ort.Add("Weimar", 2)
+  Ort.Add("Mühlhausen", 3)
+  Ort.Add("Eisenach", 4)
+  Ort.Add("Jena_|_Jembo", 5)
+  
+  FMain.Ort1.List = Ort
+  FMain.Ort2.List = Ort
+  FMain.Ort3.List = Ort
+  FMain.Ort4.List = Ort
+  FMain.Ort5.List = Ort
+  FMain.Ort6.List = Ort
+  FMain.Ort7.List = Ort
+  FMain.Ort8.List = Ort
+  
+End
+

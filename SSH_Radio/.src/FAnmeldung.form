@@ -1,0 +1,39 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,31)
+  { !User TextBox
+    MoveScaled(4,6,24,4)
+    #Public = True
+  }
+  { !Passwort TextBox
+    MoveScaled(4,15,24,4)
+    #Public = True
+    Password = True
+  }
+  { !Port TextBox
+    MoveScaled(35,15,24,4)
+    #Public = True
+    Text = ("22")
+  }
+  { !IP TextBox
+    MoveScaled(35,6,24,4)
+    #Public = True
+  }
+  { Start Button
+    MoveScaled(24,22,16,4)
+    Text = ("Start")
+  }
+  { Label1 Label
+    MoveScaled(4,10,24,5)
+  }
+  { Label2 Label
+    MoveScaled(4,2,24,4)
+  }
+  { Label3 Label
+    MoveScaled(35,11,24,4)
+  }
+  { Label4 Label
+    MoveScaled(35,2,24,4)
+  }
+}

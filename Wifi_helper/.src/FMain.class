@@ -1,0 +1,76 @@
+' Gambas class file
+
+Private Set As New Settings
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+Dim tempip As String[]
+If Set["ssh/PW"] Not "" Then 
+CGlobalVal.Passwort = Pwg8.DecodePW(Set["ssh/PW", ""])
+Endif
+CGlobalVal.User = Set["ssh/User", ""]
+CGlobalVal.IP = Set["ssh/IP", "0.0.0.0"]
+tempip = Split(CGlobalVal.IP, ".", "fasfsf", True, False)
+CGlobalVal.IP = CString(CInteger(tempip[0]) & "." & CInteger(tempip[1]) & "." & CInteger(tempip[2]) & "." & CInteger(tempip[3]))
+lock.Visible = False
+End
+
+
+
+
+Public Sub Verbindungsart_Click()
+
+  If DS.Value = True Then
+    SSID.ReadOnly = False
+    PW.Enabled = True
+    lock.Visible = False
+    unlock.Visible = True
+    
+  Else If NZone_nMD.Value = True Then
+    SSID.Text = NZone_nMD.Tooltip
+    SSID.ReadOnly = True
+    lock.Visible = True
+    unlock.Visible = True
+    PW.Enabled = False
+    
+  Else If NZone_MD.Value = True Then
+    SSID.Text = NZone_MD.Tooltip
+    SSID.ReadOnly = True
+    lock.Visible = True
+    unlock.Visible = False
+    PW.Enabled = False
+  Else If NZone_NWS.Value = True Then
+    SSID.Text = NZone_NWS.Tooltip
+    SSID.ReadOnly = False
+    lock.Visible = False
+    unlock.Visible = True
+    PW.Enabled = False
+    
+ Endif 
+End
+
+Public Sub CheckBox1_Click()
+
+  If CheckBox1.Value = CheckBox.True Then
+    PW.Password = False
+  Else If CheckBox1.Value = CheckBox.False Then
+    PW.Password = True
+  Endif
+
+End
+
+Public Sub Button1_Click()
+
+  CConf_add.add_config()
+
+End
+
+Public Sub settigs_Click()
+
+  Fsetings.Show
+  
+
+End

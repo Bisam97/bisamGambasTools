@@ -1,0 +1,22 @@
+' Gambas class file
+
+Public Sub Button1_Click()
+
+  Me.Minimized = True
+
+End
+
+Public Sub Button2_Click()
+
+  TextArea1.Clear
+  TextArea2.Clear
+  TextBox1.Clear
+
+End
+
+Public Sub Button3_Click()
+
+  FMain.Close()
+  Me.Close()
+
+End

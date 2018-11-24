@@ -1,0 +1,51 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,50,50)
+  { !user TextBox
+    MoveScaled(10,5,24,4)
+    #Public = True
+  }
+  { !host TextBox
+    MoveScaled(3,23,24,4)
+    #Public = True
+  }
+  { !pass TextBox
+    MoveScaled(10,13,24,4)
+    #Public = True
+    Password = True
+  }
+  { Label1 Label
+    MoveScaled(29,23,4,4)
+    Text = ("Port")
+  }
+  { !db TextBox
+    MoveScaled(10,33,24,4)
+    #Public = True
+  }
+  { Benutzername Label
+    MoveScaled(10,1,24,4)
+    Text = ("Benutzername")
+  }
+  { Passwort Label
+    MoveScaled(10,9,24,4)
+    Text = ("Passwort")
+  }
+  { Label2 Label
+    MoveScaled(3,18,25,4)
+    Text = ("IP des Datenbank Servers")
+  }
+  { Label3 Label
+    MoveScaled(10,29,24,4)
+    Text = ("Datenbank")
+  }
+  { verbinden Button
+    MoveScaled(17,42,16,4)
+    Text = ("Verbinden")
+    Picture = Picture["icon:/22/connect"]
+  }
+  { !port ValueBox
+    MoveScaled(34,23,11,4)
+    #Public = True
+  }
+}

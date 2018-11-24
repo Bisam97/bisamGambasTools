@@ -1,0 +1,31 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,124,56)
+  { Label1 Label
+    MoveScaled(2,0,24,4)
+    Text = ("Unverschlüselt")
+  }
+  { TextArea1 TextArea
+    MoveScaled(1,5,91,45)
+  }
+  { Button1 Button
+    MoveScaled(65,51,16,4)
+    Text = ("Signiren")
+  }
+  { Button2 Button
+    MoveScaled(38,51,16,4)
+    Text = ("Entschlüsseln")
+  }
+  { Button3 Button
+    MoveScaled(11,51,16,4)
+    Text = ("Verschlüsseln")
+  }
+  { Email TextBox
+    MoveScaled(93,10,24,4)
+  }
+  { Label2 Label
+    MoveScaled(93,5,30,4)
+    Text = ("E-mail von Öffenlichenschlüssel")
+  }
+}

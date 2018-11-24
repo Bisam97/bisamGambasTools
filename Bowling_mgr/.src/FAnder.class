@@ -1,0 +1,13 @@
+' Gambas class file
+
+
+Public Sub Button1_Click()
+
+  CTunier.save_tunier_add()
+  FMain.Close
+  CVal.Ort.Clear
+  
+  FMain.Show
+  Me.Close
+
+End

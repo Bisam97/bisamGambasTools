@@ -1,0 +1,22 @@
+' Gambas module file
+
+Public Sub saveSet(key As String, Value As String) As Boolean
+  Dim set As New Settings 
+  set.Write(Value, key)
+  set.Save
+  Return True
+  Catch
+    Message.Error(Error.Text, "ok")
+    Return False
+End
+
+Public Sub loadSet(key As String, DefaultValue As String) As String
+  Dim set As New Settings
+  Dim retun As String
+  retun = set[key, DefaultValue]
+  
+  Return retun
+  Catch
+    Message.Error(Error.Text, "ok")
+    Return Null
+End

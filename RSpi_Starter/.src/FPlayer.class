@@ -1,0 +1,205 @@
+' Gambas class file
+
+Private Player As New MediaPlayer As "Player"
+Private pos As Float
+Private CurrentPlay As New String[]
+Private Playlist As New String[]
+Private Playcount As Integer
+
+Public Sub Form_Open()
+
+  Slider1.MinValue = 0
+
+End
+
+Public Sub Button4_Click()
+
+  Dim a As String
+
+  Dialog.Title = "Wähle ein Verzeichnis aus."
+  Dialog.Filter = ["*", "All files"]
+  Dialog.Path = User.Home
+  If Dialog.SelectDirectory() Then
+    Return ' User pressed Cancel -
+  Endif
+  Playlist = addPlaylist(Dialog.Path)
+  TextArea1.Text = "Playlist" & gb.NewLine
+  For Each a In Playlist
+    TextArea1.Text = TextArea1.Text & File.BaseName(a) & gb.NewLine
+  Next
+  playgo(Playlist)
+  Player.Audio.Volume = 0.5
+  File.Save(User.Home & "/RpiSong/Playlist.txt", TextArea1.Text)
+  ' Player.URL = Media.URL(Dialog.Path)
+  ' Player.Play()
+
+End
+
+Public Sub Button3_Click()
+
+  Player.Stop()
+
+End
+
+Public Sub Button2_Click()
+
+  Timer1.Stop
+  Player.Pause()
+
+End
+
+Public Sub Button1_Click()
+
+  Player.Play
+  Timer1.Start
+
+End
+
+Public Sub Timer1_Timer()
+
+  If Slider1.Value == Slider1.MaxValue
+    Timer1.Stop
+
+    Slider1.Value = 0
+    playgo(Playlist)
+
+  Endif
+  'Print Player.Position
+
+  Slider1.Value = Player.Position
+  pos = Player.Position
+
+  LCDLabel1.Text = CurrentPlay[0]
+
+  'Slider1.MaxValue = Player.Length
+  LCDLabel2.Text = CStr(Player.Position)
+
+End
+
+Public Sub Form_Close()
+
+  Player.Stop()
+  Player.Close()
+  Me.Close
+
+End
+
+Public Sub playgo(Playlist As String[])
+
+  Dim name As String
+  Dim Path As String
+  Dim URL As String
+  Dim extent As String
+  Dim FFile As File
+
+  If Playlist.Length = 0 Then
+    Message.Info("nix in Playlist :(", " ok ")
+  Else
+    Player.Stop
+    Path = Playlist[Playcount]
+    Playcount += 1
+    If Playcount == Playlist.Length Then
+      Playcount = 0
+    Endif
+    name = File.BaseName(Path)
+    extent = File.Ext(Path)
+    URL = Media.URL(Path)
+
+    CurrentPlay.Clear
+    CurrentPlay.Add(name)
+    CurrentPlay.Add(URL)
+    CurrentPlay.Add(extent)
+
+    Player.URL = Media.URL(Path)
+
+    Wait 1
+    Player.Play
+    Wait 1
+    Slider1.MaxValue = Player.Length
+    File.Save(User.Home & "/RpiSong/CSong.txt", CurrentPlay[0])
+    Timer1.Start
+
+  Endif
+
+End
+
+Public Sub Button5_Click()
+
+  Timer1.Stop
+  Pos = 0
+  Slider1.Value = 0
+  'Timer1.Trigger
+  playgo(Playlist)
+
+End
+
+Public Sub Button6_Click()
+
+  Timer1.Stop
+  pos = 0
+  Player.Pause
+  Slider1.Value = 0
+  'Timer1.Trigger
+  Playcount -= 2
+  playgo(Playlist)
+
+End
+
+Public Sub Slider1_Change()
+
+  If CInt(Player.Position) == Slider1.Value Then
+
+  Else
+    Player.Position = Slider1.Value
+    pos = Player.Position
+  Endif
+
+End
+
+Public Sub addPlaylist(dirr As String) As String[]
+
+  Dim tmpplay As New String[]
+  Dim a As String
+
+  For Each a In Dir(dirr, "*.mp3").sort()
+
+    tmpplay.Add(dirr & "/" & a)
+
+  Next
+  For Each a In Dir(dirr, "*.mp4").sort()
+
+    tmpplay.Add(dirr & "/" & a)
+
+  Next
+  For Each a In Dir(dirr, "*.ogg").sort()
+
+    tmpplay.Add(dirr & "/" & a)
+
+  Next
+  For Each a In Dir(dirr, "*.m4a").sort()
+
+    tmpplay.Add(dirr & "/" & a)
+
+  Next
+  tmpplay = RemoveDuplicates(tmpplay)
+  Return tmpplay
+
+End
+
+Public Function RemoveDuplicates(sArray As String[]) As String[]
+
+  Dim s As String
+  Dim tempArray As New String[]
+
+  For Each s In sArray
+    If tempArray.Find(s) = -1 Then tempArray.Add(s)
+  Next
+  Return tempArray
+
+End
+
+Public Sub Button7_Click()
+
+  Me.Close()
+
+End

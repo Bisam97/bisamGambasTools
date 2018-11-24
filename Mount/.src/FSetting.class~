@@ -1,0 +1,31 @@
+' Gambas class file
+
+Private Save As String
+
+Public Sub User_Change()
+If User.Text = "" Then
+    Label_Pass.Text = "Passwort vom Benutzer "
+  Else 
+    Label_Pass.Text = Save & " " & User.Text
+Endif
+
+End
+
+Public Sub Form_Open()
+
+  Save = Label_Pass.Text
+  Label_Pass.Text = "Passwort vom Benutzer "
+  
+  IP.Text = MSaveSetting.loadSet("Setting/IP", IP.Text)
+  User.Text = MSaveSetting.loadSet("Setting/User", User.Text)
+  Passwort.Text = MSaveSetting.loadSet("Setting/Passwort", Passwort.Text)
+  
+End
+
+Public Sub Speichern_Click()
+
+  MSaveSetting.saveSet("Setting/IP", IP.Text)
+  MSaveSetting.saveSet("Setting/User", User.Text)
+  MSaveSetting.saveSet("Setting/Passwort", Passwort.Text)
+
+End

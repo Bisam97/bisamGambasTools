@@ -1,0 +1,36 @@
+' Gambas class file
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+Dim set As New Settings
+
+FMain.user.Text = set["user", user.Text]
+FMain.pass.Text = set["Passwort", FMain.pass.Text]
+FMain.host.Text = set["host", Me.host.Text]
+Me.port.Text = set["port", ""]
+Me.db.Text = set["db", ""]
+End
+
+
+Public Sub verbinden_Click()
+ 
+
+  MConeckt.Connect()
+  FAbfrage.Show()
+  FMain.Close
+  Catch
+    Message.Error(Error.Text, "ok")
+End
+
+Public Sub Form_Close()
+  Dim set As New Settings
+  set["user"] = User.Text 
+  set["Passwort"] = Passwort.Text
+  set["host"] = host.Text 
+  set["port"] = port.Text  
+  set["db"] = db.Text
+  
+End

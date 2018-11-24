@@ -1,0 +1,22 @@
+# Gambas Project File 3.0
+# Compiled with Gambas 3.1.1
+Title=Bowling_mgr
+Startup=FMain
+Icon=Bowling.png
+Version=0.9.0
+Component=gb.image
+Component=gb.gui
+Component=gb.form
+Component=gb.settings
+Component=gb.xml
+TabSize=2
+ExecPath=/home/knoppix/Desktop/Bowlingmgr.gambas
+Maintainer=knoppix
+Address=knoppix@Microknoppix
+Url=http://www.youtube.com/bisam97
+License=General Public License
+PackageName=bowling_mgr-0.9
+Packager=1
+Systems=debian
+Menus=debian:"Applications/Editors"
+Groups=debian:"editors"

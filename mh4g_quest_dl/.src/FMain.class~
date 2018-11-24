@@ -1,0 +1,42 @@
+' Gambas class file
+
+Const Dload As String = "wget --user-agent='User-Agent: Capcom Browser Services for MonsterHunter_4G' http://goshawk.capcom.co.jp/3ds/mh4g/m"
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+
+  If Exist(User.Home & "/mh4g") Then
+    
+  Else
+    
+    Mkdir User.Home & "/mh4g"
+    
+  Endif
+
+End
+
+Public Sub Button1_Click()
+
+  Dim uebergabe As String
+  Dim i_min As Integer
+  Dim i_max As Integer
+  
+  i_min = SpinBox1.Value
+  i_max = SpinBox2.Value
+  
+  FConsole.txtCommandActivate("cd " & User.home & "/mh4g")
+  
+  While i_min <= i_max
+    
+  
+  uebergabe = Dload & i_min & ".mib"
+  
+  FConsole.txtCommandActivate(uebergabe)
+  
+  i_min += 1
+  Wend
+  
+End

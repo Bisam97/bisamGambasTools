@@ -1,0 +1,62 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,81,48)
+  { MDR_TH Button
+    MoveScaled(8,2,16,4)
+    Text = ("MDR TH")
+  }
+  { Antene_Th Button
+    MoveScaled(34,2,16,4)
+    Text = ("Antene TH")
+  }
+  { Landeswelle Button
+    MoveScaled(8,9,16,4)
+    Text = ("Landeswelle")
+  }
+  { Separator1 Separator
+    MoveScaled(-2,20,87,4)
+  }
+  { load Button
+    MoveScaled(2,26,16,4)
+    Text = ("Laden")
+  }
+  { Stop Button
+    MoveScaled(41,26,16,4)
+    Text = ("Stop")
+  }
+  { aus Button
+    MoveScaled(21,26,16,4)
+    Text = ("Ausschalten")
+  }
+  { Timer1 #Timer
+    #MoveScaled(57,57)
+    Delay = 10000
+  }
+  { TextArea1 TextArea
+    MoveScaled(0,32,80,10)
+    ReadOnly = True
+  }
+  { Playlist Button
+    MoveScaled(61,26,16,4)
+    Text = ("Sender")
+  }
+  { Button1 Button
+    MoveScaled(59,2,16,4)
+  }
+  { Button2 Button
+    MoveScaled(59,9,16,4)
+  }
+  { Button3 Button
+    MoveScaled(34,9,16,4)
+  }
+  { Button4 Button
+    MoveScaled(34,16,16,4)
+  }
+  { Button5 Button
+    MoveScaled(59,16,16,4)
+  }
+  { Button6 Button
+    MoveScaled(8,16,16,4)
+  }
+}

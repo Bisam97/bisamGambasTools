@@ -1,0 +1,77 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,102,38)
+  { !Box1 ValueBox
+    MoveScaled(3,9,9,4)
+    #Public = True
+  }
+  { Label7 Label
+    MoveScaled(8,17,12,4)
+    Text = ("Durchschnitt")
+  }
+  { ValueBox7 ValueBox
+    MoveScaled(21,17,17,4)
+    ReadOnly = True
+  }
+  { !Box2 ValueBox
+    MoveScaled(21,9,9,4)
+    #Public = True
+  }
+  { Label1 Label
+    MoveScaled(21,4,9,4)
+    Text = ("Spiel 2")
+  }
+  { Label9 Label
+    MoveScaled(3,4,9,4)
+    Text = ("Spiel 1")
+  }
+  { Label3 Label
+    MoveScaled(38,4,9,4)
+    Text = ("Spiel 3")
+  }
+  { !Box3 ValueBox
+    MoveScaled(38,9,9,4)
+    #Public = True
+  }
+  { !Box4 ValueBox
+    MoveScaled(55,9,9,4)
+    #Public = True
+  }
+  { Label2 Label
+    MoveScaled(55,4,9,4)
+    Text = ("Spiel 4")
+  }
+  { ValueBox8 ValueBox
+    MoveScaled(64,17,17,4)
+    ReadOnly = True
+  }
+  { !Box5 ValueBox
+    MoveScaled(73,9,9,4)
+    #Public = True
+  }
+  { Label5 Label
+    MoveScaled(73,4,9,4)
+    Text = ("Spiel 5")
+  }
+  { Label4 Label
+    MoveScaled(90,4,9,4)
+    Text = ("Spiel 6")
+  }
+  { !Box6 ValueBox
+    MoveScaled(90,9,9,4)
+    #Public = True
+  }
+  { DateBox1 DateBox
+    MoveScaled(39,23,24,4)
+  }
+  { Button1 Button
+    MoveScaled(43,30,16,4)
+    Text = ("Hinzufügen")
+    Picture = Picture["icon:/16/connect"]
+  }
+  { Label6 Label
+    MoveScaled(56,17,8,4)
+    Text = ("Gesamt")
+  }
+}

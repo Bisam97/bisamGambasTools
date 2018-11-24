@@ -1,0 +1,23 @@
+' Gambas class file
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+
+
+End
+
+Public Sub newpkteam_Click()
+
+  FPokeTeam.Show
+
+End
+
+Public Sub reloadInfo_Click()
+
+  FFirstStart.Show
+  Me.Close
+
+End

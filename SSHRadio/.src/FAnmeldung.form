@@ -1,0 +1,21 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,24)
+  { IP TextBox
+    MoveScaled(35,2,24,4)
+  }
+  { Port TextBox
+    MoveScaled(35,8,24,4)
+  }
+  { User TextBox
+    MoveScaled(5,2,24,4)
+  }
+  { Passwort TextBox
+    MoveScaled(5,8,24,4)
+  }
+  { ok Button
+    MoveScaled(24,16,16,4)
+    Text = ("Start")
+  }
+}

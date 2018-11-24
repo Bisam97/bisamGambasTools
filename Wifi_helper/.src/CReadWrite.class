@@ -1,0 +1,74 @@
+' Gambas class file
+
+  Static Public Sub bi97_Read(Path_not_suffix As String, Search As String, Index As Integer) As String[]
+
+    Dim hFile As File
+    Dim sLine As String
+    Dim Path As String
+    Dim bi97 As String[]
+    Path = Path_not_suffix & ".bi97"
+    If Exist(Path) Then
+      hFile = Open Path For Input
+
+      While Not Eof(hFile)
+      Line Input #hFile, sLine
+      bi97 = Split(sLine, "|")
+      If bi97.Count > Index - 1 Then
+        If bi97[index] = Search Then
+         hFile.Close
+         Return bi97
+         Break
+         Endif
+      Endif
+      Wend
+    Endif
+    
+
+  hFile.Close
+ Catch
+  
+  
+End
+
+ Static Public Sub bi97_Write(Path_not_suffix As String, Index As String, Search As String, indexn As Integer) As Boolean
+  Dim hFile As File
+  Dim Path As String
+ 
+  Index = Index & gb.NewLine
+  Path = Path_not_suffix & ".bi97"
+  Index = bi97_Readcheck(Path_not_suffix, Search, indexn) & Index 
+      File.Save(Path, Index)
+  Catch
+End
+Static Private Sub bi97_Readcheck(Path_not_suffix As String, Search As String, Index As Integer) As String
+    Dim hFile As File
+    Dim sLine As String
+    Dim Path As String
+    Dim bi97 As String[]
+    Dim s As String
+    Path = Path_not_suffix & ".bi97"
+    If Exist(Path) Then
+      hFile = Open Path For Input
+
+      While Not Eof(hFile)
+      Line Input #hFile, sLine
+      
+      
+      bi97 = Split(sLine, "|")
+      If bi97.Count > Index - 1 Then
+        If bi97[index] = Search Then
+          
+      Else
+         s = sLine & gb.NewLine & s
+      Endif
+      Endif
+      Wend
+    Endif
+
+  
+  
+  Return s
+  hFile.Close
+  Catch
+    
+End

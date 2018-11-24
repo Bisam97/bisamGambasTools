@@ -1,0 +1,29 @@
+' Gambas class file
+
+Export
+
+Inherits UserControl
+
+Public Sub _new()
+
+  Dim hLabel As Label
+  
+  hLabel = New Label(Me) As "MyLabel"
+  hLabel.Text = "Gambas!"
+  hLabel.Font = Font["+4,Bold,Italic"]
+  hLabel.Border = Border.Plain
+  
+End
+
+Public Sub MyLabel_Enter()
+
+  Last.Text = "Gambas Almost Means BASIC!"
+
+End
+
+Public Sub MyLabel_Leave()
+
+  Last.Text = "Gambas!"
+
+End
+

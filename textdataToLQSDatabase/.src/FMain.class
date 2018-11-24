@@ -1,0 +1,134 @@
+' Gambas class file
+
+Public Sub Form_Open()
+
+  FAllesandere.Show()
+  Spinner1.Visible = False
+
+End
+
+Public Sub Button1_Click()
+
+  Dim Felder As New String[]
+  Dim FelderType As New Integer[]
+  Dim i As Integer
+  Dim temps As New String[]
+  Dim s As String
+  Dim Insert As New String[][]
+
+  Spinner1.Visible = True
+  Spinner1.Start()
+  If Not FAllesandere.TextArea1.Text == "" And Not FAllesandere.TextArea2.Text == "" Then
+
+    temps = Split(FAllesandere.TextArea2.Text, "\n")
+
+    i = 0
+
+    For Each s In temps
+      FelderType.Add(MConvert.ConvertFeldType(s))
+
+      i += 1
+    Next
+
+    temps.Clear
+    temps = Split(FAllesandere.TextArea1.Text, "\n")
+
+    For Each s In temps
+      Felder.Add(s)
+    Next
+
+    Insert = MConvert.ConvertCsvText(TextArea1.Text)
+    MVerbindung.OpenConnection(DBHost.Text, DBName.Text)
+    MVerbindung.NewTabel(FAllesandere.TextBox1.Text, Felder, FelderType, 0)
+
+    temps.Clear
+    i = Insert.Count
+    Spinner1.Visible = True
+    Spinner1.Start
+    For Each temps In Insert
+
+      MVerbindung.NewInsert(FAllesandere.TextBox1.Text, Felder, temps)
+      i -= 1
+      Print "noch " & CStr(i)
+    Next
+
+  Else
+
+    FAllesandere.Show()
+    Message.Info("Bitte Auch die Felder ausfüllen")
+    FAllesandere.Show()
+
+  Endif
+  Spinner1.Stop
+  Spinner1.Visible = False
+
+End
+
+Public Sub Button2_Click()
+
+  Dialog.Title = "Choose a Directory"
+  Dialog.Filter = ["*.db", "Datenbank Datei", "*", "All files"]
+  Dialog.Path = "."
+  If Dialog.SelectDirectory() Then
+    Return ' User pressed Cancel -
+  Endif
+  DBHost.Text = Dialog.Path
+
+End
+
+Public Sub Button3_Click()
+
+  Dialog.Title = "Choose a Directory"
+  Dialog.Filter = ["*.csv", "CSV Datenbank Datei", "*.txt", "Textdatei", "*", "All files"]
+  Dialog.Path = "."
+  If Dialog.OpenFile() Then
+    Return ' User pressed Cancel -
+  Endif
+  TextBox1.Text = Dialog.Path
+
+End
+
+Public Sub einlesenCSV()
+
+  Dim text As String
+  Dim liste As String[]
+  Dim posten As String
+  Dim reihe As String
+  Dim n As Integer
+  Dim komptext As String
+
+  text = File.Load(TextBox1.Text)
+  liste = Split(text, Chr(10))
+  textarea1.Text = ""
+  For Each posten In liste
+    If posten = "" Then
+      reihe = ""
+    Else
+      reihe = posten & Chr(10)
+      Print n
+      n += 1
+    End If
+    komptext = komptext & reihe
+    Print reihe
+  Next
+  textarea1.Text = komptext
+
+End
+
+Public Sub Button4_Click()
+
+  einlesenCSV
+
+End
+
+Public Sub Form_Close()
+
+  MVerbindung.close()
+
+End
+
+Public Sub Button5_Click()
+
+  FAllesandere.Show()
+
+End

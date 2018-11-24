@@ -1,0 +1,32 @@
+' Gambas class file
+
+Private $t As Integer
+Private $k As String
+
+Public Sub _new(t As Integer, k As String)
+
+  $t = t
+  $k = k
+
+End
+
+Public Sub Send() As String[]
+
+  Return [CStr($t), $k]
+
+End
+
+Static Public Sub Receive(d As String[][]) As Test[]
+
+  Dim s As String[]
+  Dim t As Test[]
+  Dim tt As Test
+
+  t = New Test[]
+
+  For Each s In d
+    tt = New Test(CInt(s[0]), s[1])
+    t.Add(tt)
+  Next
+
+End

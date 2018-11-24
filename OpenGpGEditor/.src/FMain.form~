@@ -1,0 +1,28 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,115,56)
+  { Label1 Label
+    MoveScaled(2,0,24,4)
+    Text = ("Unverschlüselt")
+  }
+  { TextArea1 TextArea
+    MoveScaled(1,5,91,45)
+    Text = ("TextArea1")
+  }
+  { Button1 Button
+    MoveScaled(65,51,16,4)
+    Text = ("Signiren")
+  }
+  { Button2 Button
+    MoveScaled(38,51,16,4)
+    Text = ("Entschlüsseln")
+  }
+  { Button3 Button
+    MoveScaled(11,51,16,4)
+    Text = ("Verschlüsseln")
+  }
+  { SliderBox1 SliderBox
+    MoveScaled(92,18,22,4)
+  }
+}

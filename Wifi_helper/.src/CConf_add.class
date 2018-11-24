@@ -1,0 +1,33 @@
+' Gambas class file
+
+Static Public Sub add_config()
+  Dim conf As String
+  If FMain.DS.Value = False Then
+    conf = "interface=wlan0" & Chr(10) & "driver=nl80211" & Chr(10) & "ssid=" & Fmain.ssid.Text & Chr(10) & "hw_mode=g" & Chr(10) & "channel=9" & Chr(10) & "macaddr_acl=0" & Chr(10) & "auth_algs=1" & Chr(10) & "ignore_broadcast_ssid=0" & Chr(10) & "ieee80211n=1"
+  Else
+    conf = "interface=wlan0" & Chr(10) & "driver=nl80211" & Chr(10) & "ssid=" & Fmain.ssid.Text & Chr(10) & "hw_mode=g" & Chr(10) & "channel=9" & Chr(10) & "macaddr_acl=0" & Chr(10) & "auth_algs=1" & Chr(10) & "ignore_broadcast_ssid=0" & Chr(10) & "wpa=3" & Chr(10) & "wpa_passphrase=" & Fmain.Pw.Text & Chr(10) & "wpa_key_mgmt=WPA-PSK" & Chr(10) & "wpa_pairwise=TKIP" & Chr(10) & "rsn_pairwise=CCMP" & Chr(10) & "ieee80211n=1"
+  
+  Endif
+  Print conf
+  stream_aad(conf)
+End
+
+Static Private Sub stream_aad(conf As String)
+  Dim Ftemp As File
+  Dim Path As String
+  Dim x As String
+   Path = "/tmp/" & CString(Application.Id) & ".txt"
+   Ftemp = Open Path For Write Create
+   Write #Ftemp, conf
+   Shell "scp " & Path & " " & CGlobalVal.User & "@" & CGlobalVal.IP & ":/home/" & CGlobalVal.User & "/wifi.conf " 
+   FConsole.Show
+   Wait 1
+   
+   x = "ssh " & CGlobalVal.User & "@" & CString(CGlobalVal.IP) 
+   FConsole.txtCommand(x)
+   x = "sh /home/" & CGlobalVal.User & "/wifi.sh"
+   FConsole.txtCommand(x)
+   Wait 1 
+   ' FConsole.txtCommand("exit")
+   ' FConsole.txtCommand("exit")
+End

@@ -1,0 +1,12 @@
+# Gambas Project File 3.0
+# Compiled with Gambas 3.5.4
+Title=PKShowBot
+Startup=FMain
+Version=0.0.1
+Component=gb.image
+Component=gb.qt4
+Component=gb.form
+Component=gb.desktop
+Component=gb.qt4.webkit
+TabSize=2
+Packager=1

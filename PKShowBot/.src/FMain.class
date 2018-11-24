@@ -1,0 +1,62 @@
+' Gambas class file
+
+' Gambas class file
+
+
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+WebView1.Url = "http://play.pokemonshowdown.com/"
+
+
+
+End
+
+Public Sub open_Edit_Team()
+ Dim teambulder As WebHitTest
+ Dim newteam As WebElement
+ Dim import As WebElement
+ Dim Cur As New Cursor(Picture.Load("/media/sdb1/Gambas/Bisam97_OFFlineDVRechner/bisam97-offlinedvrechner.png"), 253, 700)
+ 
+  'Code
+  Wait()
+  
+  'Aufruhfen der Teambulder Fläche
+   teambulder = WebView1.HitTest(253, 700)
+   
+   
+  
+End
+
+
+
+
+Private Sub Wait()
+  
+While WebView1.Progress < 1.0
+  
+  TextArea1.Text &= "Bitte Warten ...."
+  
+Wend
+  TextArea1.Text &= gb.NewLine & "Fertig"
+End
+
+Public Sub WebView1_DblClick()
+  
+  
+  Print "X" & Str(Mouse.X - WebView1.X) 
+  Print "Y" & Str(Mouse.Y - WebView1.Y)
+  
+
+End
+
+
+
+Public Sub TextArea1_DblClick()
+
+  open_Edit_Team()
+
+End

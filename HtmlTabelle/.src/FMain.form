@@ -1,0 +1,87 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  Move(0,0,665,458)
+  #Scaled = False
+  Resizable = False
+  { TabStrip1 TabStrip
+    Move(0,7,665,448)
+    Count = 3
+    Index = 0
+    Text = ("Eingabe")
+    { Expander2 Expander
+      Move(7,161,637,161)
+      Text = ("Spalten Eingabe")
+      Animated = True
+      Hidden = True
+      { Button4 Button
+        Move(14,84,133,28)
+        Text = ("Spalte hinzufügen")
+      }
+      { Button5 Button
+        Move(147,84,133,28)
+        Text = ("Zeile hinzufügen")
+      }
+      { Label2 Label
+        Move(301,42,252,28)
+        Text = ("Spalte eingeben und Knopf auswählen")
+      }
+      { Spalte TextBox
+        Move(21,42,266,28)
+      }
+      { Label6 Label
+        Move(21,7,168,28)
+        Text = ("Spalten Eingabe")
+      }
+    }
+    { Expander1 Expander
+      Move(7,7,651,154)
+      Text = ("Gesamt Eingabe")
+      Animated = True
+      Hidden = True
+      { Eingabe TextArea
+        Move(10,7,616,56)
+        Font = Font["Arial,+2"]
+      }
+      { Separator1 Separator
+        Move(315,70,42,49)
+      }
+      { Label1 Label
+        Move(28,84,287,28)
+        Text = ("Die einzelen Spalten mit einem \"%\" Trennen")
+      }
+      { Label5 Label
+        Move(399,84,196,28)
+        Text = ("Zeilen Trennen mit einem \"#\"")
+      }
+    }
+    { Button1 Button
+      Move(238,385,182,28)
+      Text = ("Umwandeln in Html Tabele")
+    }
+    { Timer1 #Timer
+      #Move(602,357)
+      Delay = 10
+    }
+    Index = 1
+    Text = ("Ausgabe")
+    { Ausgabe TextArea
+      Move(7,7,644,371)
+      ReadOnly = True
+    }
+    { Button2 Button
+      Move(224,385,217,28)
+      Text = ("In Zwischenablage Kopiren")
+    }
+    Index = 2
+    Text = ("HTML Text Dokument")
+    { Html_Doc_zone TextArea
+      Move(0,7,665,371)
+    }
+    { Speichern Button
+      Move(238,385,182,28)
+      Text = ("Als HTML Doc Speichern")
+    }
+    Index = 0
+  }
+}

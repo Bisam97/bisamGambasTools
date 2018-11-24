@@ -1,0 +1,15 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,80,64)
+  { TextBox1 TextBox
+    MoveScaled(28,47,24,4)
+  }
+  { Abfrage Button
+    MoveScaled(32,57,16,4)
+  }
+  { Ergebnis TextArea
+    MoveScaled(0,0,80,43)
+    ReadOnly = True
+  }
+}

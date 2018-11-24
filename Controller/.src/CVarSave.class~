@@ -1,0 +1,5 @@
+' Gambas class file
+
+Static Public Benutzter As String
+Static Public IP As String 
+Static Public PS As String

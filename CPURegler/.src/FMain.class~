@@ -1,0 +1,31 @@
+' Gambas class file
+
+Public Sub _new()
+ProgressBar1.value = 0.01
+End
+
+Public Sub Form_Open()
+ ProgressBar1.Enabled = True
+ FConsole.Show()
+ FConsole.eingabe("cpufreq-info")
+ Wait 1
+ einlesen(FConsole.txtConsole.Text)
+End
+
+Static Public Sub einlesen(zurEinleseung As String)
+  Dim sa As String[]
+  Dim asa As String
+  Dim se As String[]
+  Dim anzahl_CPU As Integer
+  sa = Split(zurEinleseung, gb.NewLine)
+  se = Split(zurEinleseung, "  \n")
+  anzahl_CPU = 0
+  For Each asa In se
+    If asa == "analysiere" Then
+      anzahl_CPU += 1
+    Endif
+  Next 
+  
+  Print anzahl_CPU
+End
+

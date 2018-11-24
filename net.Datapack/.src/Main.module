@@ -1,0 +1,20 @@
+' Gambas module file
+
+Public Sub Main()
+
+  Dim s As Socket
+  Dim t As Test
+  Dim p As Datapack
+  Dim re As String[][]
+  Dim d As Object
+
+  d = 1
+  s = New Socket
+  t = New Test(1, "h")
+  p = New Datapack(0, [t])
+  p.Send(s)
+  re = Datapack.Receive("<DATAPACK|0|<NEXTOBJ|1|h|>|ENDDATAPACK>")
+
+  Print test.Receive(re)
+
+End

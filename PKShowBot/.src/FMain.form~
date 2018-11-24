@@ -1,0 +1,12 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,156,161)
+  { TextArea1 TextArea
+    MoveScaled(0,103,156,16)
+    Text = ("TextArea1")
+  }
+  { WebView1 WebView
+    MoveScaled(0,2,157,159)
+  }
+}

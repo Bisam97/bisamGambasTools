@@ -1,0 +1,63 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(38.4286,16.1429,115,50)
+  Text = ("Console")
+  Icon = Picture["terminal.png"]
+  Arrangement = Arrange.Vertical
+  { btnCtrlC Button
+    MoveScaled(2,1,16,4)
+    Text = ("Beenden")
+  }
+  { TabPanel1 TabPanel
+    MoveScaled(0,5,114,44)
+    Count = 2
+    Index = 0
+    Text = ("Console")
+    { txtConsole TextArea
+      MoveScaled(0,0,98,41)
+      Font = Font["Monospace,10"]
+      Expand = True
+      ReadOnly = True
+    }
+    Index = 1
+    Text = ("Verbindungs Tab")
+    { verbindung1 Label
+      MoveScaled(77,1,35,4)
+      Foreground = &H17C442&
+    }
+    { verbindung2 Label
+      MoveScaled(77,6,35,4)
+      Foreground = &H17C442&
+    }
+    { verbindung3 Label
+      MoveScaled(77,11,35,4)
+      Foreground = &H17C442&
+    }
+    { verbindung4 Label
+      MoveScaled(77,16,35,4)
+      Foreground = &H17C442&
+    }
+    { verbindung5 Label
+      MoveScaled(77,21,35,4)
+      Foreground = &H17C442&
+    }
+    { verbindung6 Label
+      MoveScaled(77,26,35,4)
+      Foreground = &H17C442&
+    }
+    { verbindung7 Label
+      MoveScaled(77,31,35,4)
+      Foreground = &H17C442&
+    }
+    { verbindung8 Label
+      MoveScaled(77,36,35,4)
+      Foreground = &H17C442&
+    }
+    { txtConDicon TextArea
+      MoveScaled(0,0,76,40)
+      ReadOnly = True
+    }
+    Index = 0
+  }
+}

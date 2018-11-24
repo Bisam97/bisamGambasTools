@@ -1,0 +1,68 @@
+' Gambas class file
+
+  
+  Private Pokemon1 As Pokemon
+  Private Pokemon2 As Pokemon
+  Private Pokemon3 As Pokemon
+  Private Pokemon4 As Pokemon
+  Private Pokemon5 As Pokemon
+  Private Pokemon6 As Pokemon
+  
+  
+  
+Public Sub Form_Open()
+  
+  Pokemon1 = New Pokemon(1)
+  Pokemon2 = New Pokemon(1)
+  Pokemon3 = New Pokemon(1)
+  Pokemon4 = New Pokemon(1)
+  Pokemon5 = New Pokemon(1)
+  Pokemon6 = New Pokemon(1)
+    
+    
+    
+End
+
+Public Sub addpk_Click()
+
+  If PokemonTeam.Count <= 5 Then
+    PokemonTeam.Count += 1
+    
+  Endif
+
+End
+
+Public Sub delpk_Click()
+  Dim Index As Integer
+  If PokemonTeam.Count >= 2 Then
+    Index = PokemonTeam.Index
+    If Index + 1 == PokemonTeam.Count Then
+      PokemonTeam.Count -= 1
+    Endif
+  Endif
+
+End
+
+
+
+
+
+
+Public Sub Pokemonname_GotFocus()
+  
+  
+ 
+  FFind.Show
+  PokemonNummer.SetFocus
+ 
+
+End
+
+
+
+
+Public Sub PokemonTeam_Click()
+
+  
+
+End

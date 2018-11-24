@@ -1,0 +1,92 @@
+' Gambas class file
+
+Static Public Pokelist As New String[]
+Static Private savelist As New String[]
+
+Public Sub Form_Open()
+
+  Me.X = FMain.X + FMain.Width + 10
+  Me.Y = FMain.Y 
+  Findlist.Clear
+  load_Pokelist() 
+  savelist = Pokelist.Copy()
+
+End
+
+Static Private Sub load_Pokelist()
+  
+  Dim sPath As String
+  Dim hFile As File
+  Dim sLine As String
+  
+    Pokelist.Clear
+    savelist.Clear
+    
+   sPath = "/etc/.Bisam97/PokemonlistGER.data"
+  
+  hFile = Open sPath For Read
+
+ 
+ While Not Eof(hFile)
+  Line Input #hFile, sLine
+  
+  Pokelist.Add(sLine)
+  Me.Findlist.Add(sLine)
+  
+  Wend
+  
+  
+  
+End
+
+Public Sub search_KeyRelease()
+  If search.Text Not Null Then
+      load_Pokelist
+      Pokelist = CFind.findPoke(Pokelist, search.Text)
+      
+      Pokelist = CFind.RemoveDuplicates(Pokelist)
+      umlesen()
+    Catch
+      
+  Else
+    Form_Open
+  Endif
+  If search.Text == Chr(8)
+    Print True
+  Endif
+End
+
+Static Private Sub umlesen()
+  Dim s As String
+  Me.Findlist.Clear()
+    If Pokelist Not Null Then
+  For Each s In Pokelist
+     
+    Me.Findlist.Add(s)
+    
+  Next
+    Endif
+  
+End
+
+Public Sub Reload_Click()
+
+  search.Clear
+  Form_Open
+
+End
+
+Public Sub Findlist_DblClick()
+
+  FPokeTeam.Pokemonname.Text = Findlist.Current.Text
+  FPokeTeam.PokemonNummer.Value = savelist.Find(Findlist.Current.Text) + 1
+  Me.Close
+
+End
+
+Public Sub Form_Close()
+  
+  
+  
+End
+

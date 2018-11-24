@@ -1,0 +1,97 @@
+' Gambas module file
+
+Private $con As New Connection
+
+Public Sub OpenConnection(DBHost As String, DBName As String)
+
+  ' If $con.Databases.Exist Then
+  $Con.Close()              ' Close the connection
+  $Con.Type = "sqlite3"      ' Type of connection
+  $Con.Host = DBHost   ' Name of the server
+  $Con.Login = ""       ' User's name for the connection
+  $Con.Port = ""        ' Port to use in the connection, usually 3306
+  $Con.Name = "" 'DBName      ' Name of the database we want to use
+  $Con.Password = "" ' User's password
+  Try $Con.Open()               ' Open the connection
+  If Error Then
+    Print "Could not open database connection " & DBHost
+    Error.Raise(Error.Text)
+  Endif
+  If Not $con.Databases.Exist(DBName) Then
+    Print "Database not found. Creating new database"
+    ' Create a new database
+    $con.Databases.Add(DBName)
+    ' I found I needed this with a SQLite database
+    ' (but not with a MySQL database)
+    Wait 0.5
+  Endif
+
+  $con.Close()
+  $con.Name = DBName
+  $con.Host = DBHost
+  $con.Open()
+  Message.Info("Verbindung zu " & DBHost & " aufgebaut und mit der Datenbank " & DBName & " Verbunden")
+
+End
+
+Public Sub NewTabel(TName As String, Felder As String[], FelderTypen As Integer[], PrimaryKey As Integer)
+
+  Dim $Tabele As Table
+  Dim sa As New String[]
+  Dim i As Integer
+  Dim s As String
+
+  i = 0
+  If Not $con.Tables.Exist(TName) Then
+    $Tabele = $con.Tables.Add(TName)
+    For Each s In Felder
+
+      $Tabele.Fields.Add(s, FelderTypen[i])
+
+      i += 1
+    Next
+
+    sa.Add(Felder[PrimaryKey])
+    $Tabele.PrimaryKey = sa
+    $Tabele.Update()
+    $con.Begin()
+
+    Endif
+
+End
+
+Public Sub NewInsert(TName As String, Felder As String[], Insert As String[])
+
+  Dim $Tabele As Table
+  Dim i As Result
+  Dim s As String
+  Dim z As Integer
+
+  If Insert.Count == Felder.Count Then
+    If $con.Tables.Exist(TName) Then
+      $Tabele = $con.Tables[TName]
+      i = $con.Create(TName)
+      z = 0
+      For Each s In Felder
+        i[s] = Insert[z]
+
+        z += 1
+      Next
+
+      i.Update()
+
+    Endif
+  Endif
+Catch
+  If Not Error.Text = "Cannot create record: Abort due to constraint violation" Then
+    Message.Error(Error.Text)
+  Endif
+  Print Error.Text
+
+End
+
+Public Sub Close()
+
+  $con.Close()
+
+End

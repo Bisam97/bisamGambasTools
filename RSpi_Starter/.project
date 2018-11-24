@@ -1,0 +1,19 @@
+# Gambas Project File 3.0
+# Compiled with Gambas 3.8.4
+Title=RSpi Starter
+Startup=FMain
+Version=1.2.1
+Component=gb.image
+Component=gb.gui
+Component=gb.form
+Component=gb.media
+TabSize=2
+Language=en_US
+Maintainer=bisam97
+Address=bisam97@bisam97.de
+Url=www.youtube.com/bisam97
+License=General Public License
+PackageName=rspi_starter-1.2.1
+PackageVersion=2
+Packager=1
+Systems=autotools

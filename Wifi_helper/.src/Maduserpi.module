@@ -1,0 +1,49 @@
+' Gambas module file
+
+Public User As String
+Public PW As String
+Public Raum As String
+Public Name As String
+
+
+Public Sub startscript()
+  Dim x As String
+  User = FadUserpiRS.User.Text
+  PW = FadUserpiRS.PW.Text
+  Raum = FadUserpiRS.Raum.Text
+  Name = FadUserpiRS.Namee.Text
+  FConsole.Show
+   x = "ssh " & CGlobalVal.User & "@" & CString(CGlobalVal.IP) 
+   FConsole.txtCommand(x)
+   Wait 5
+   x = "sudo adduser " & User
+   FConsole.txtCommand(x)
+   Wait 10
+   x = PW
+   
+   FConsole.txtCommand(x)
+   Wait 1
+   FConsole.txtCommand(x)
+   Wait 1
+   x = Name
+   FConsole.txtCommand(x)
+   Wait 4
+   x = Raum
+   FConsole.txtCommand(x)
+   Wait 4
+   x = ""
+   FConsole.txtCommand(x)
+   Wait 1
+   FConsole.txtCommand(x)
+   Wait 1
+   FConsole.txtCommand(x)
+   Wait 5
+   x = "j"
+   
+   FConsole.txtCommand(x)
+   FConsole.Close
+   FadUserpiRS.Close
+   
+End
+
+ 

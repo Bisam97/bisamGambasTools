@@ -1,0 +1,90 @@
+' Gambas class file
+
+  
+  Property PkNr As Integer
+  Property isMega As Boolean
+  Property witchMega As Boolean
+  Property natureID As Integer
+  Property abilityID As Integer
+  
+  Private $iPkNr As Integer
+  Private $bisMega As Boolean
+  Private $bwitchMega As Boolean
+  Private $inatureID As Integer
+  Private $iabilityID As Integer
+  
+  
+  Public Sub _new(aPKnr As Integer)
+  
+  PkNr_Write(aPKnr)
+  
+End
+
+  Function PkNr_Read() As Integer
+
+  Return $iPkNr
+
+End
+
+Sub PkNr_Write(iPkNr As Integer)
+
+  $iPkNr = iPkNr
+  'UpdateEverything
+
+End
+
+Function isMega_Read() As Boolean
+
+  Return $bisMega
+  
+
+End
+
+Sub isMega_Write(bisMega As Boolean)
+
+  $bisMega = bisMega
+  'UpdateEverything
+
+End
+
+Function witchMega_Read() As Boolean
+
+  Return $bwitchMega
+  
+
+End
+
+Sub witchMega_Write(bwitchMega As Boolean)
+
+
+
+  $bwitchMega = bwitchMega
+  'UpdateEverything
+
+End
+ Function natureID_Read() As Integer
+
+  Return $inatureID
+
+End
+
+Sub natureID_Write(inatureID As Integer)
+
+  $inatureID = inatureID
+  'UpdateEverything
+
+End
+ Function abilityID_Read() As Integer
+
+  Return $iabilityID
+
+End
+
+Sub abilityID_Write(iabilityID As Integer)
+
+  $iabilityID = iabilityID
+  'UpdateEverything
+
+End
+
+

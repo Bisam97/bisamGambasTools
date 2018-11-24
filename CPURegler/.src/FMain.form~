@@ -1,0 +1,11 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,50,19)
+  { HBox1 HBox
+    MoveScaled(0,7,50,4)
+    { ProgressBar1 ProgressBar
+      MoveScaled(0,0,50,4)
+    }
+  }
+}

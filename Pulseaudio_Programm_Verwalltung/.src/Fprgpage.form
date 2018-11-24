@@ -1,0 +1,16 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,64)
+  { Bearbeiten Menu
+    Text = ("Bearbeiten")
+    { add Menu
+      Text = ("add")
+    }
+  }
+  { Label1 Label
+    MoveScaled(0,0,64,64)
+    Text = ("Leider Kein Programm hier  :(")
+    Alignment = Align.Center
+  }
+}

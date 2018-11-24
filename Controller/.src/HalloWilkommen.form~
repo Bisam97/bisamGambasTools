@@ -1,0 +1,35 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,27,49)
+  { TextLabel1 TextLabel
+    MoveScaled(1,1,24,8)
+    Text = ("Willkomen zum ersten Start der Software sshRadio(Rs pi)")
+  }
+  { IP ValueBox
+    MoveScaled(2,15,22,4)
+    Type = ValueBox.IPAddress
+  }
+  { User TextBox
+    MoveScaled(4,28,18,4)
+  }
+  { Label1 Label
+    MoveScaled(1,9,24,5)
+    Text = ("ip zum Rasberry pi")
+  }
+  { Label2 Label
+    MoveScaled(1,21,24,4)
+    Text = ("Benutzername")
+  }
+  { Button1 Button
+    MoveScaled(4,43,18,4)
+    Text = ("Save")
+  }
+  { TextBox1 TextBox
+    MoveScaled(4,36,18,4)
+  }
+  { Label3 Label
+    MoveScaled(1,32,24,4)
+    Text = ("Passwort")
+  }
+}

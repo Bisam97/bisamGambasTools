@@ -1,0 +1,9 @@
+' Gambas class file
+
+'--------------------Verbindung-----------------------------'
+Static Public V_Mac As New String[7]
+Static Public V_Name As New String[7]
+Static Public V_Online As New Boolean[7]
+Static Public V_neu As New Boolean[7]
+'--------------------Verbindung-----------------------------'
+

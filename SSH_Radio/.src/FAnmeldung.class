@@ -1,0 +1,27 @@
+' Gambas class file
+
+
+
+Public Sub User_KeyPress()
+
+  
+
+End
+
+Public Sub Form_Open()
+
+  Label2.Text = User.Name
+  Label1.Text = Passwort.Name
+  Label3.Text = Port.Name
+  Label4.Text = IP.Name
+  
+  
+End
+
+
+Public Sub Start_Click()
+
+  FTest.Show()
+  FAusgabe.Show()
+
+End

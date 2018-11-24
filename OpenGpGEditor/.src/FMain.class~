@@ -1,0 +1,36 @@
+' Gambas class file
+
+Prog As String
+  
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+
+End
+
+
+Public Sub Button3_Click()
+
+  Dim sFlio As String
+  Dim sFile As File
+  Dim sLine As String
+  Dim sarry As String[]
+  
+   Clipboard.Clear
+   Clipboard.Copy(TextArea1.Text)
+   TextArea1.Clear
+   Shell "bash /etc/.Bisam97/openPGP/endcode.sh -m " & Email.Text & " -o" 
+   Wait 2
+   sFile = Open "/tmp/pgp.txt" For Read
+   While Not Eof(sFile)
+   Line Input #sFile, sLine
+    Print sLine
+    
+    TextArea1.Text = TextArea1.Text & sLine
+    
+  
+Wend 
+End
+

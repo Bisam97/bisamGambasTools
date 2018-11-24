@@ -1,0 +1,332 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,114,58)
+  { !TabStrip1 TabStrip
+    MoveScaled(1,0,113,58)
+    #Public = True
+    NoTabFocus = True
+    AutoResize = True
+    Count = 4
+    Index = 0
+    Text = ("Ergebniss eintragen")
+    Picture = Picture["icon:/16/floppy"]
+    { Box4 ValueBox
+      MoveScaled(60.1429,9,9,4)
+    }
+    { DateBox1 DateBox
+      MoveScaled(44.1429,23,24,4)
+    }
+    { Box3 ValueBox
+      MoveScaled(43,9,9,4)
+    }
+    { Box2 ValueBox
+      MoveScaled(25.5714,9,9,4)
+    }
+    { Box1 ValueBox
+      MoveScaled(8,9,9,4)
+    }
+    { Box5 ValueBox
+      MoveScaled(78,9,9,4)
+    }
+    { Box6 ValueBox
+      MoveScaled(95,9,9,4)
+    }
+    { ValueBox7 ValueBox
+      MoveScaled(26,17,17,4)
+      ReadOnly = True
+    }
+    { ValueBox8 ValueBox
+      MoveScaled(69.2857,17,17,4)
+      ReadOnly = True
+    }
+    { Label1 Label
+      MoveScaled(25.5714,4,9,4)
+      Text = ("Spiel 2")
+    }
+    { Label9 Label
+      MoveScaled(8.2857,4,9,4)
+      Text = ("Spiel 1")
+    }
+    { Label2 Label
+      MoveScaled(60.1429,4,9,4)
+      Text = ("Spiel 4")
+    }
+    { Label3 Label
+      MoveScaled(42.8571,4,9,4)
+      Text = ("Spiel 3")
+    }
+    { Label4 Label
+      MoveScaled(95,4,9,4)
+      Text = ("Spiel 6")
+    }
+    { Label5 Label
+      MoveScaled(77.5714,4,9,4)
+      Text = ("Spiel 5")
+    }
+    { Label6 Label
+      MoveScaled(61,17,8,4)
+      Text = ("Gesamt")
+    }
+    { Label7 Label
+      MoveScaled(13,17,12,4)
+      Text = ("Durchschnitt")
+    }
+    { Button1 Button
+      MoveScaled(48.1429,30,16,4)
+      Text = ("Hinzufügen")
+      Picture = Picture["icon:/16/connect"]
+    }
+    Index = 1
+    Text = ("Ergebnisse einsehen")
+    Picture = Picture["icon:/16/connect"]
+    { Button3 Button
+      MoveScaled(69.5714,32,16,4)
+      Text = ("Löschen")
+    }
+    { Button4 Button
+      MoveScaled(26.7143,32,16,4)
+      Text = ("Ändern")
+    }
+    { !ListBox1 ListBox
+      MoveScaled(0,1,112,30)
+      #Public = True
+    }
+    Index = 2
+    Text = ("Ergebniss ändern")
+    Picture = Picture["icon:/16/wizard"]
+    { DateBox2 DateBox
+      MoveScaled(44.1429,23,24,4)
+    }
+    { ValueBox9 ValueBox
+      MoveScaled(60.1429,9,9,4)
+    }
+    { ValueBox10 ValueBox
+      MoveScaled(77.5714,9,9,4)
+    }
+    { ValueBox11 ValueBox
+      MoveScaled(25.5714,9,9,4)
+    }
+    { ValueBox12 ValueBox
+      MoveScaled(8.2857,9,9,4)
+    }
+    { ValueBox13 ValueBox
+      MoveScaled(26.1429,17,17,4)
+      ReadOnly = True
+    }
+    { ValueBox14 ValueBox
+      MoveScaled(69.2857,17,17,4)
+      ReadOnly = True
+    }
+    { Label8 Label
+      MoveScaled(25.5714,4,9,4)
+      Text = ("Spiel 2")
+    }
+    { Label10 Label
+      MoveScaled(8.2857,4,9,4)
+      Text = ("Spiel 1")
+    }
+    { Label11 Label
+      MoveScaled(60.1429,4,9,4)
+      Text = ("Spiel 4")
+    }
+    { Label12 Label
+      MoveScaled(42.8571,4,9,4)
+      Text = ("Spiel 3")
+    }
+    { Label13 Label
+      MoveScaled(95,4,9,4)
+      Text = ("Spiel 6")
+    }
+    { Label14 Label
+      MoveScaled(77.5714,4,9,4)
+      Text = ("Spiel 5")
+    }
+    { Label15 Label
+      MoveScaled(61,17,8,4)
+      Text = ("Gesamt")
+    }
+    { Label16 Label
+      MoveScaled(13,17,12,4)
+      Text = ("Durchschnitt")
+    }
+    { Button2 Button
+      MoveScaled(48.1429,30,16,4)
+      Text = ("Ändern")
+    }
+    { ValueBox15 ValueBox
+      MoveScaled(42.8571,9,9,4)
+    }
+    { ValueBox16 ValueBox
+      MoveScaled(95,9,9,4)
+    }
+    Index = 3
+    Text = ("Spieltag Übersicht")
+    { !Ort1 ComboBox tunier
+      Name = "Ort1"
+      MoveScaled(3,6,24,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { !Ort2 ComboBox tunier
+      Name = "Ort2"
+      MoveScaled(3,12,24,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { !Ort3 ComboBox tunier
+      Name = "Ort3"
+      MoveScaled(3,18,24,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { !Ort4 ComboBox tunier
+      Name = "Ort4"
+      MoveScaled(3,24,24,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { !Ort5 ComboBox tunier
+      Name = "Ort5"
+      MoveScaled(3,30,24,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { !Ort6 ComboBox tunier
+      Name = "Ort6"
+      MoveScaled(3,36,24,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { !Ort7 ComboBox tunier
+      Name = "Ort7"
+      MoveScaled(3,42,24,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { !Ort8 ComboBox tunier
+      Name = "Ort8"
+      MoveScaled(3,48,24,4)
+      #Public = True
+      ReadOnly = True
+    }
+    { Separator1 Separator
+      MoveScaled(29,0,1,53)
+    }
+    { Wo Label
+      MoveScaled(4,2,24,4)
+      Text = ("Wo")
+    }
+    { Separator2 Separator
+      MoveScaled(43,0,1,53)
+    }
+    { !Gesamt1 ValueBox
+      MoveScaled(31,6,11,4)
+      #Public = True
+    }
+    { !Gesamt8 ValueBox
+      MoveScaled(31,48,11,4)
+      #Public = True
+    }
+    { !Gesamt7 ValueBox
+      MoveScaled(31,42,11,4)
+      #Public = True
+    }
+    { !Gesamt6 ValueBox
+      MoveScaled(31,36,11,4)
+      #Public = True
+    }
+    { !Gesamt5 ValueBox
+      MoveScaled(31,30,11,4)
+      #Public = True
+    }
+    { !Gesamt4 ValueBox
+      MoveScaled(31,24,11,4)
+      #Public = True
+    }
+    { !Gesamt3 ValueBox
+      MoveScaled(31,18,11,4)
+      #Public = True
+    }
+    { !Gesamt21 ValueBox
+      MoveScaled(31,12,11,4)
+      #Public = True
+    }
+    { Separator3 Separator
+      MoveScaled(65,0,1,53)
+    }
+    { Gesamt Label
+      MoveScaled(32,2,11,4)
+      Text = ("Gesamt")
+    }
+    { !Schnitt1 ValueBox
+      MoveScaled(48,6,11,4)
+      #Public = True
+    }
+    { !Schnitt2 ValueBox
+      MoveScaled(48,12,11,4)
+      #Public = True
+    }
+    { !Schnitt3 ValueBox
+      MoveScaled(48,18,11,4)
+      #Public = True
+    }
+    { !Schnitt5 ValueBox
+      MoveScaled(48,30,11,4)
+      #Public = True
+    }
+    { Gesamt2 Label
+      MoveScaled(48,2,13,4)
+      Text = ("Durchschnitt")
+    }
+    { !Schnitt7 ValueBox
+      MoveScaled(48,42,11,4)
+      #Public = True
+    }
+    { !Schnitt8 ValueBox
+      MoveScaled(48,48,11,4)
+      #Public = True
+    }
+    { !Schnitt4 ValueBox
+      MoveScaled(48,24,11,4)
+      #Public = True
+    }
+    { !Schnitt6 ValueBox
+      MoveScaled(48,36,11,4)
+      #Public = True
+    }
+    { Button5 Button
+      MoveScaled(69,6,22,4)
+      Text = ("Ändern / Hinzufügen")
+    }
+    { Button6 Button
+      MoveScaled(69,12,22,4)
+      Text = ("Ändern / Hinzufügen")
+    }
+    { Button7 Button
+      MoveScaled(69,18,22,4)
+      Text = ("Ändern / Hinzufügen")
+    }
+    { Button8 Button
+      MoveScaled(69,24,22,4)
+      Text = ("Ändern / Hinzufügen")
+    }
+    { Button9 Button
+      MoveScaled(69,30,22,4)
+      Text = ("Ändern / Hinzufügen")
+    }
+    { Button10 Button
+      MoveScaled(69,36,22,4)
+      Text = ("Ändern / Hinzufügen")
+    }
+    { Button11 Button
+      MoveScaled(69,42,22,4)
+      Text = ("Ändern / Hinzufügen")
+    }
+    { Button12 Button
+      MoveScaled(69,48,22,4)
+      Text = ("Ändern / Hinzufügen")
+    }
+    Index = 0
+  }
+}

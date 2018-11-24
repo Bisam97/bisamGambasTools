@@ -1,0 +1,19 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(38.4286,16.1429,99,50)
+  Text = ("Console")
+  Icon = Picture["terminal.png"]
+  Arrangement = Arrange.Vertical
+  { btnCtrlC Button
+    MoveScaled(1,1,16,4)
+    Text = ("Abbrechen")
+  }
+  { !txtConsole TextArea
+    MoveScaled(1,7,47,37)
+    #Public = True
+    Font = Font["Monospace,10"]
+    Expand = True
+    ReadOnly = True
+  }
+}

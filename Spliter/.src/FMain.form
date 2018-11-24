@@ -1,0 +1,22 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,50,50)
+  { ButtonBox1 ButtonBox
+    MoveScaled(3,2,32,4)
+    ReadOnly = True
+  }
+  { ButtonBox2 ButtonBox
+    MoveScaled(3,9,32,4)
+    ReadOnly = True
+  }
+  { Prufens Button
+    MoveScaled(17,42,16,4)
+  }
+  { Label1 Label
+    MoveScaled(5,17,24,4)
+  }
+  { Label2 Label
+    MoveScaled(5,23,24,4)
+  }
+}

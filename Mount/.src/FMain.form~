@@ -1,0 +1,15 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,50,50)
+  AutoResize = True
+  { Button1 Button
+    MoveScaled(1,1,16,4)
+    AutoResize = True
+  }
+  { settigns Button
+    MoveScaled(36,45,13,4)
+    Text = ("Setting")
+    Picture = Picture["settings16x16.png"]
+  }
+}

@@ -1,0 +1,62 @@
+' Gambas class file
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+
+End
+
+Public Sub ButtonBox1_Click()
+  
+  
+  Dialog.Path = User.Home
+  Dialog.Title = "Bitte Liste 1 Wählen"
+  Dialog.Filter = ["*.txt", "Text Files", "*", "All files"]
+  If Dialog.OpenFile(False) Then
+    Return ' User pressed Cancel -
+  Endif
+  ButtonBox1.Text = Dialog.Path
+End
+Public Sub ButtonBox2_Click()
+  
+  
+  Dialog.Path = User.Home
+  Dialog.Title = "Bitte Liste 2 Wählen"
+  Dialog.Filter = ["*.txt", "Text Files", "*", "All files"]
+  If Dialog.OpenFile(False) Then
+    Return ' User pressed Cancel -
+  Endif
+  ButtonBox2.Text = Dialog.Path
+End
+
+
+Public Sub Prufens_Click()
+  Dim first As File
+  Dim sec As File
+  Dim i As Integer
+  Dim a As Integer
+  Dim s As String
+  first = Open ButtonBox1.Text For Read
+  sec = Open ButtonBox2.Text For Read
+  While Not Eof(first)
+   i = i + 1
+   Line Input #first, s
+   Print i
+   Print s
+   'Ausgabe im Direktfenster
+ Wend
+ While Not Eof(sec)
+   Line Input #sec, s
+   a = a + 1
+   Print a
+   Print s
+   'Ausgabe im Direktfenster
+ Wend
+Finally ' Immer ausführen, auch bei einem Fehler
+Close #first
+Close #sec
+Label1.Text = i
+Label2.Text = a
+End

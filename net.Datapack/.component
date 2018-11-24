@@ -1,0 +1,6 @@
+[Component]
+Key=net.Datapack
+Version=0.0.1
+State=2
+Hidden=True
+Requires=gb.net,gb

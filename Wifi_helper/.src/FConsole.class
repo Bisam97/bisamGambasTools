@@ -1,0 +1,250 @@
+' Gambas class file
+
+
+Private $hProcess As Process
+Private $sText As String
+
+
+Static Public Sub Main()
+
+  Dim hForm As Form
+
+  hForm = New FConsole
+  hForm.Show
+
+End
+
+
+Public Sub _new()
+
+  $hProcess = Exec ["bash", "--noediting"] For Input Output As "Process"
+
+End
+
+
+Public Sub Form_Close()
+
+  $hProcess.Kill
+
+End
+
+
+Public Sub Process_Read()
+
+  Dim sStr As String
+
+  'Debug Eof(Last);; Lof(Last);;
+  'While Not sStr
+  Read #$hProcess, sStr, -256
+  'Wend
+  'Error sStr
+  $sText = $sText & sStr
+  'Debug Quote(sStr)
+  UpdateConsole
+
+End
+
+
+Public Sub Process_Error(sStr As String)
+  
+  $sText = $sText & sStr
+  UpdateConsole
+  
+End
+
+Private Sub UpdateConsole()
+
+  Dim iPos As Integer
+  Dim sStr As String
+  Dim sStri As New String[30]
+  Dim n As Integer
+  Dim set As New Settings
+  Dim sLog As String
+  Dim bi97 As String[]
+  Dim Path As String
+  Dim z As Integer
+  Path = User.Home & "/wifi/conf"
+  
+  n = 0
+  While Not sStri.Count = 30
+    sStri[n] = CString(n)
+    n = 1 + 1
+  Wend
+  
+  While Len($sText)
+  
+    iPos = InStr($sText, "\n")
+    If iPos = 0 Then iPos = Len($sText)
+    
+    sStr = Normalize(Left$($sText, iPos))
+    'Debug sStr
+    $sText = Mid$($sText, iPos + 1)
+    
+    sStri = Split(sStr, " ")
+    If sStri.Count > 2 Then
+    If sStri[1] == "AP-STA-CONNECTED" Then
+      
+      n = 0
+      While CConeckt.V_Online[n] = True
+      n += 1
+      If n = 7 Then Break
+      Wend
+      bi97 = CReadWrite.bi97_Read(Path, Left(sStri[2], 17), 0)
+      If bi97 = Null Then
+         CConeckt.V_Online[n] = True
+         CConeckt.V_Mac[n] = sStri[2]
+         CConeckt.V_Name[n] = "[Fremd]"
+         CConeckt.V_neu[n] = True
+      Else
+         CConeckt.V_Online[n] = True
+         CConeckt.V_Mac[n] = bi97[0]
+         CConeckt.V_Name[n] = bi97[1]
+         CConeckt.V_neu[n] = False
+      Endif
+      CReadWrite.bi97_Write(Path, Left(CConeckt.V_Mac[n], 17) & "|" & CConeckt.V_Name[n], CConeckt.V_Mac[n], 0)
+      sLog = "[" & Time & "] " & "Verbindung zu " & CConeckt.V_Name[n] & " [" & CConeckt.V_Mac[n] & "] vorhanden" & "\n"
+      If n = 0 Then
+        verbindung1.Text = CConeckt.V_Name[n] & " " & CConeckt.V_Mac[n]
+      Else If n = 1 Then
+        verbindung2.Text = CConeckt.V_Name[n] & " " & CConeckt.V_Mac[n]
+      Else If n = 2 Then
+        verbindung3.Text = CConeckt.V_Name[n] & " " & CConeckt.V_Mac[n]
+      Else If n = 3 Then
+        verbindung4.Text = CConeckt.V_Name[n] & " " & CConeckt.V_Mac[n]
+      Else If n = 4 Then
+        verbindung5.Text = CConeckt.V_Name[n] & " " & CConeckt.V_Mac[n]
+      Else If n = 5 Then
+        verbindung6.Text = CConeckt.V_Name[n] & " " & CConeckt.V_Mac[n]
+      Else If n = 6 Then
+        verbindung7.Text = CConeckt.V_Name[n] & " " & CConeckt.V_Mac[n]
+      Else If n = 7 Then
+        verbindung8.Text = CConeckt.V_Name[n] & " " & CConeckt.V_Mac[n]
+      Else
+      Endif
+    Endif
+    If sStri[1] == "AP-STA-DISCONNECTED" Then
+      n = 0
+      While Not n = 7
+        
+        If sStri[2] = CConeckt.V_Mac[n] Then
+          z = n
+        Endif
+        
+      n += 1
+      
+      Wend
+      sLog = "[" & Time & "] " & "Verbindung zu " & CConeckt.V_Name[n] & " [" & CConeckt.V_Mac[n] & "] getrennt " & "\n"
+      
+      CConeckt.V_Online[z] = False
+      CConeckt.V_Name[z] = n
+      CConeckt.V_Mac[z] = ""
+      
+      If n = 0 Then
+        verbindung1.Text = ""
+      Else If n = 1 Then
+        verbindung2.Text = ""
+      Else If n = 2 Then
+        verbindung3.Text = ""
+      Else If n = 3 Then
+        verbindung4.Text = ""
+      Else If n = 4 Then
+        verbindung5.Text = ""
+      Else If n = 5 Then
+        verbindung6.Text = ""
+      Else If n = 6 Then
+        verbindung7.Text = ""
+      Else If n = 7 Then
+        verbindung8.Text = ""
+      Else
+      Endif
+    Endif
+    txtConDicon.Pos = txtConDicon.Length
+    txtConDicon.Insert(sLog)
+    Endif
+    
+    txtConsole.Pos = txtConsole.Length
+    txtConsole.Insert(sStr)
+  
+  Wend
+  
+End
+
+
+
+Public Sub Process_Kill()
+  
+  'hProcess = NULL
+  Try Me.Close
+  
+End
+
+
+
+Public Sub txtCommand(sLig As String)
+  
+  
+  
+  sLig = sLig & gb.NewLine
+  
+  'txtConsole.Pos = txtConsole.Length
+  'txtConsole.Insert("# " & sLig)
+  
+
+  sLig = Conv$(sLig, Desktop.Charset, System.Charset)
+  
+  Print #$hProcess, sLig;
+  
+End
+
+
+Static Private Function Normalize(sStr As String) As String
+
+  Dim sNorm As String
+  Dim iInd As Integer
+  Dim iCar As Integer
+  Dim bEsc As Boolean
+
+  ' For iInd = 1 To Len(sStr)
+  ' 
+  '   iCar = Asc(sStr, iInd)
+  ' 
+  '   If iCar = 27 Then
+  '     bEsc = True
+  '     Continue
+  '   Endif
+  ' 
+  '   If bEsc Then
+  '     If iCar < 32 Then bEsc = False
+  '     Continue
+  '   Endif
+  ' 
+  '   If iCar < 32 And iCar <> 10 Then iCar = 32
+  ' 
+  '   sNorm = sNorm & Chr$(iCar)
+  ' 
+  ' Next
+  
+  sNorm = sStr
+  
+  If System.Charset = Desktop.Charset Then 
+    Return sNorm
+  Else
+    Return Conv$(sNorm, System.Charset, Desktop.Charset) 
+  Endif
+  
+End
+
+Public Sub Form_Open()
+
+  
+
+End
+
+Public Sub btnCtrlC_Click()
+
+  Print #$hProcess, Chr$(3);
+
+End
+
+
+

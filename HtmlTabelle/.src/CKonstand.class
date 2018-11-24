@@ -1,0 +1,7 @@
+' Gambas class file
+
+Public Const FMain_Heith_max As Integer = 460
+Public Const FMain_Heith_min As Integer = 120
+Public Const TabStrip_Heith_max As Integer = 450 
+Public Const TabStrip_Heith_min As Integer = 100
+

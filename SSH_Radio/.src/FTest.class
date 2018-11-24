@@ -1,0 +1,28 @@
+' Gambas class file
+
+Private pssh As Process
+
+Public Sub _new()
+
+  
+
+End
+
+Public Sub Form_Open()
+
+  gb.s
+  
+
+End
+
+Public Sub Form_Close()
+  
+  pssh.Kill
+  
+End
+
+Public Sub Button1_Click()
+
+  Write #pssh, "mpc play 1 \n 10"
+
+End

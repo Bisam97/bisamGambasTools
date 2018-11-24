@@ -1,0 +1,52 @@
+' Gambas module file
+
+Public Sub ConvertFeldType(Type As String) As Integer
+
+  If Type = "String" Then
+    Return db.String
+  Else If Type = "Blob" Then
+    Return db.Blob
+  Else If Type = "Boolean" Then
+    Return db.Boolean
+  Else If Type = "Date" Then
+    Return db.Date
+  Else If Type = "Float" Then
+    Return db.Float
+  Else If Type = "Integer" Then
+    Return db.Integer
+  Else If Type = "Long" Then
+    Return db.Long
+  Else If Type = "Serial" Then
+    Return db.Serial
+  Else
+    Message.Info("Fehlerhafter Dateityp gefunden Bitte Eingabe nochmal Prüfen \n" & Type)
+    Return 0
+  Endif
+
+End
+
+Public Sub ConvertCsvText(CsvText As String) As String[][]
+
+  Dim temps As New String[]
+  Dim temps1 As New String[]
+  Dim Finalarr As New String[][]
+  Dim s As String
+
+  temps = Split(CsvText, "\n")
+  For Each s In temps
+    temps1 = CsvSplit(s)
+    Finalarr.Add(temps1)
+  Next
+  Print "o/"
+  Return Finalarr
+
+End
+
+Private Sub CsvSplit(SplitText As String) As String[]
+
+  Dim finalar As String[]
+
+  finalar = Split(SplitText, ",")
+  Return finalar
+
+End

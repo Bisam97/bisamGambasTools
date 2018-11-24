@@ -1,0 +1,65 @@
+' Gambas class file
+
+Static Public Sub findPoke(ur_string_array As String[], search As String) As String[]
+  
+  Dim newPokelist As New String[]
+  Dim Pokelist As New String[]
+  Dim Buchstaben As New String[]
+  Dim Pokebuchstaben As New String[]
+  Dim intn As Integer
+  Dim sstring As String
+  Dim x As Integer
+  Dim s As String
+  
+  Pokelist = ur_string_array
+  x = 0
+  While Len(search) >= x
+  
+  Buchstaben.Add(String.Mid(search, 1, x + 1), x)
+  'Print Buchstaben[x]
+  
+  x += 1
+  Wend
+  
+ 
+  For Each s In Pokelist
+       x = 0
+    While Len(s) >= x
+  
+      Pokebuchstaben.Add(String.Mid(s, 1, x + 1), x)
+  
+  
+      x += 1
+    Wend
+    
+    intn = 0
+    
+    For Each sstring In Buchstaben
+      
+      If search == Pokebuchstaben[Len(search) - 1] Then
+        
+        newPokelist.Add(s)
+        intn += 1
+      Endif
+      
+      
+      
+      
+      
+    Next
+  Next
+  
+  Return newPokelist
+  
+End
+
+Static Public Function RemoveDuplicates(sArray As String[]) As String[]
+  Dim s As String
+  Dim tempArray As New String[]
+  For Each s In sArray
+     If tempArray.Find(s) = -1 Then tempArray.Add(s)
+  Next
+  Return tempArray
+End
+
+

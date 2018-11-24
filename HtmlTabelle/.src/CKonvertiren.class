@@ -1,0 +1,63 @@
+' Gambas class file
+
+
+Static Private Ausgabe As String
+Static Public Html_Doc As String
+
+Static Public Sub init_Tabelle(Eingabe As String) As String
+  Ausgabe = Null
+  
+  Ausgabe = "<table border=1 frame=hsides>\n"
+  ZeilenTrennen(Eingabe)
+  end_Tabelle(Eingabe)
+  new_Html_Doc()
+  Return Ausgabe
+End
+
+
+Static Private Sub ZeilenTrennen(Eingabe As String) 
+  
+  Dim Eingabe_Array As New String[]
+  Dim s As String
+  
+  Eingabe_Array = Split(Eingabe, "#")
+  
+  For Each s In Eingabe_Array
+    
+    Ausgabe = Ausgabe & "<tr>\n"
+    
+    SpaltenTrennen(s)
+    
+    Ausgabe = Ausgabe & "</tr>\n"
+    
+  Next
+  
+End
+
+Static Private Sub SpaltenTrennen(Zeile As String)
+  
+  Dim Zeilen_Array As New String[]
+  Dim s As String
+  
+  Zeilen_Array = Split(Zeile, "%")
+  
+  For Each s In Zeilen_Array
+    
+    Ausgabe = Ausgabe & "<td>" & s & "</td>\n"
+    
+  Next
+  
+End
+
+Static Private Sub end_Tabelle(Eingabe As String)
+  
+  Ausgabe = Ausgabe & "</table>\n<!-- Hier der Code aus dem die Tabelle erstelt wurden ist (Eingeben in die Gesamteingebe bei der Bearbeitung der Tabelle mit HtmlTabelle):\n" & Eingabe & "\n-->\n"
+  
+End
+
+Static Public Sub new_Html_Doc()
+  Html_Doc = Null
+  Html_Doc = "<!DOCTYPE html>\n<html>\n  <head>\n    <title></title>\n    <meta charset='utf-8'>\n    \n  </head>\n  <body>\n" & Ausgabe & "  </body>\n</html>"
+  
+End
+

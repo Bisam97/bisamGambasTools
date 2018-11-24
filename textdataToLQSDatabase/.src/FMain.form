@@ -1,0 +1,59 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,64)
+  { Button1 Button
+    MoveScaled(4,28,16,4)
+    Text = ("Verbinden")
+    Picture = Picture["icon:/22/connect"]
+  }
+  { DBHost TextBox
+    MoveScaled(19,13,24,4)
+  }
+  { Label1 Label
+    MoveScaled(19,8,24,4)
+    Text = ("Der Pfart zur Datei")
+  }
+  { Button2 Button
+    MoveScaled(43,13,5,4)
+    Picture = Picture["icon:/22/find"]
+  }
+  { DBName TextBox
+    MoveScaled(19,22,24,4)
+  }
+  { Label2 Label
+    MoveScaled(19,18,24,4)
+    Text = ("Datenbank Name")
+  }
+  { TextBox1 TextBox
+    MoveScaled(19,4,24,4)
+  }
+  { Button3 Button
+    MoveScaled(43,4,5,4)
+    Picture = Picture["icon:/22/find"]
+  }
+  { Label3 Label
+    MoveScaled(19,0,24,4)
+    Text = ("CSV bzw TxT Datei")
+  }
+  { TextArea1 TextArea
+    MoveScaled(0,37,64,27)
+    ReadOnly = True
+  }
+  { Label4 Label
+    MoveScaled(1,33,24,4)
+    Text = ("Eingelesene CSV Datei")
+  }
+  { Button4 Button
+    MoveScaled(24,28,16,4)
+    Text = ("CSV Einlesen")
+    Picture = Picture["icon:/22/apply"]
+  }
+  { Button5 Button
+    MoveScaled(44,28,16,4)
+    Text = ("DB Einstellung")
+  }
+  { Spinner1 Spinner
+    MoveScaled(1,2,62,61)
+  }
+}

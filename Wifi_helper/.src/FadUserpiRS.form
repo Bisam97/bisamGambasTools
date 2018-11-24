@@ -1,0 +1,41 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,31,64)
+  { !User TextBox
+    MoveScaled(3,9.5714,24,4)
+    #Public = True
+  }
+  { !PW TextBox
+    MoveScaled(3,23.1429,24,4)
+    #Public = True
+  }
+  { !Raum TextBox
+    MoveScaled(3,36.7143,24,4)
+    #Public = True
+  }
+  { !Namee TextBox
+    MoveScaled(3,50.2857,24,4)
+    #Public = True
+  }
+  { Label1 Label
+    MoveScaled(3,5,24,4)
+    Text = ("Benutzer ")
+  }
+  { Label2 Label
+    MoveScaled(3,18,24,4)
+    Text = ("Passwort")
+  }
+  { Label3 Label
+    MoveScaled(3,32,24,4)
+    Text = ("Raum (Optional)")
+  }
+  { Label4 Label
+    MoveScaled(3,45,24,4)
+    Text = ("Vollername (Optional)")
+  }
+  { Button1 Button
+    MoveScaled(7,57,16,4)
+    Text = ("weiter")
+  }
+}

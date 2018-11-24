@@ -1,0 +1,145 @@
+' Gambas class file
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+  
+  CStream.Open_Stream()
+  CTunier.open_Streams()
+  CTunier.read_all_in()
+  CVal.add_Ort_list()
+  'CTunier.read_ort()
+  Catch
+    Message.Error(Error.Text, "ok")
+    Me.Close
+End
+
+Public Sub Button1_Click()
+
+  Dim Path As String
+  Path = DateBox1.Value & " " & Box1.Text & " " & Box2.Text & " " & Box3.Text & " " & Box4.Text & " " & Box5.Text & " " & Box6.Text 
+  CStream.add_Ergebniss(Path, True)
+  Path = ""
+End
+
+
+Public Sub Button4_Click()
+  Dim nummer As Integer
+  Dim ergebniss As New String[]
+  Dim Txt As String
+  
+  nummer = ListBox1.Index
+
+  
+  ergebniss = Split(CStream.read_Stream(nummer), " ", "abc", False)
+  Print Txt
+  Print nummer
+  Print ergebniss[1]
+  
+  
+  Catch
+    Message.info(Error.Text, "ok")
+
+End
+
+Public Sub Form_Close()
+  
+  CStream.Close_Stream()
+  
+End
+
+Public Sub Button3_Click()
+
+  CStream.delete_Stream()
+
+End
+
+Public Sub Form_KeyRelease()
+
+ValueBox8.Text = CInteger(Box1.Text) + CInteger(Box2.Text) + CInteger(Box3.Text) + CInteger(Box4.Text) + CInteger(Box5.Text) + CInteger(Box6.Text) 
+ValueBox7.Text = CInteger(ValueBox8.Text) / 6
+  
+
+End
+
+Public Sub Hi_Click()
+  
+  FAnder.Show()
+  
+End
+
+
+
+
+Public Sub Button5_Click()
+
+  CVal.ReadTunierNummer = 0
+  Hi_Click()
+  
+End
+
+
+Public Sub Button6_Click()
+
+  
+  CVal.ReadTunierNummer = 1
+  Hi_Click()
+  
+
+End
+
+Public Sub Button7_Click()
+
+  
+  CVal.ReadTunierNummer = 2
+  Hi_Click()
+  
+
+End
+
+Public Sub Button8_Click()
+
+  
+  CVal.ReadTunierNummer = 3
+  Hi_Click()
+  
+
+End
+
+Public Sub Button9_Click()
+
+  
+  CVal.ReadTunierNummer = 4
+  Hi_Click()
+  
+
+End
+
+Public Sub Button10_Click()
+
+  
+  CVal.ReadTunierNummer = 5
+  Hi_Click()
+  
+
+End
+
+Public Sub Button11_Click()
+
+  
+  CVal.ReadTunierNummer = 6
+  Hi_Click()
+  
+
+End
+
+Public Sub Button12_Click()
+
+  
+  CVal.ReadTunierNummer = 7
+  Hi_Click()
+  
+
+End

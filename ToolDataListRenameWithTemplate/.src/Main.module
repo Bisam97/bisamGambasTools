@@ -1,0 +1,48 @@
+' Gambas module file
+
+Public Sub Main()
+  
+  Dim A1 As String[]
+  Dim s As String
+  Dim A2 As String[]
+  Dim a3 As String[][]
+  Dim a As String[]
+  Dim t As String[]
+  
+  Print "Please Give me a Directory With your Files you like rename and a Template (CSV like 'Oldname:NewName') in the Args"
+  If Args.Count <> 3 Then 
+    Print "No Valid Args"
+    Quit
+  Endif 
+  If Not Exist(Args[1]) Then
+    Print "No Valid Args (arg 1)"
+    Quit
+  Endif
+  If Not Exist(Args[2]) Then
+    Print "No Valid Args (arg 2)"
+    Quit
+  Endif
+  Print "Valid Args"
+  
+  A1 = Split(File.Load(args[2]), gb.NewLine)
+  a3 = New String[][]
+  For Each s In A1
+    A2 = Split(s, ",")
+    
+    a3.add(a2)
+  Next
+  
+  For Each s In Dir(Args[1])
+    t = Split(s, "/.")
+    
+    For Each a In a3
+      If a.Find(String.Upper(t[0])) == 0 Then
+        Exec ["mv", Args[1] & "/" & s, Args[1] & "/" & a[1] & ".png"]
+        Print "Es wurde " & t[0] & " mit " & a[1] & " ersetzt"
+        Break
+      Endif
+    Next
+    
+  Next
+  
+End

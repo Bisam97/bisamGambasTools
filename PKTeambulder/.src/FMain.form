@@ -1,0 +1,18 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,50,10)
+  { newpkteam Button
+    MoveScaled(29,3,18,4)
+    Text = ("Bulid New Team")
+  }
+  { editpkteam Button
+    MoveScaled(2,3,18,4)
+    Enabled = False
+    Text = ("Edit Team")
+  }
+  { reloadInfo Button
+    MoveScaled(22,3,5,4)
+    Picture = Picture["icon:/16/refresh"]
+  }
+}

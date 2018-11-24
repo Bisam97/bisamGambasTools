@@ -1,0 +1,158 @@
+' Gambas class file
+
+ 
+' Diese Klasse PWG8 stellt 2 öffentliche Methoden zur Verfügung, die zum Kodieren 
+' und Dekodieren eines Passwortes benötigt werden. Es wird außerdem eine globale 
+' Variable 'Valid' vom Typ Boolean für Prüfzwecke bereit gestellt. Die Klasse lässt 
+' sich über ihre öffentliche Schnittstelle von einer Benutzeroberfläche aus ansteuern.
+ 
+' *** Private Konstanten ***
+' Das sind 4 Zeichensätze für das verschlüsselte Passwort.
+' Wichtig ist nur, dass es sich um disjunkte Mengen handelt.
+' Das bedeutet, dass ein Zeichen nur einmal in den 4 Teilmengen vorkommen darf.
+ 
+' Zeichensatz:
+Private Const sZeichensatzGB As String = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" ' 26 Zeichen
+Private Const sZeichensatzKB As String = "abcdefghijklmnopqrstuvwxyz" ' 26 Zeichen
+Private Const sZeichensatzN As String = "0123456789"                  ' 10 Zeichen
+Private Const sZeichensatzS As String = "@#+*!?"                      ' 6  Zeichen
+ 
+' *** Öffentliche Variablen ***
+Public Passwort As String
+ 
+' *** Konstruktor ***
+Public Sub _new()
+  Passwort = ""
+End ' _new()
+ 
+' *** Öffentliche Methoden ***
+Static Public Function EncodePW(sInput As String) As String ' <--- Verschlüsseln
+  Dim iCount, iPosition, kCount As Integer
+  Dim longInteger As Long
+  Dim sZeichen, sBitfolge8, sBitfolge2, sPasswortE As String
+ 
+  Randomize ' <--- Initialisierung mit Zeitstempel
+ 
+  sPasswortE = ""
+ 
+  For iCount = 1 To Len(sInput)
+    sZeichen = Mid(sInput, iCount, 1)
+    longInteger = Asc(sZeichen)
+    sBitfolge8 = Bin(longInteger, 8)
+    iPosition = 1
+ 
+    For kCount = 1 To 4
+      sBitfolge2 = Mid(sBitfolge8, iPosition, 2)
+      Select Case sBitfolge2
+      Case "00"
+        sPasswortE = sPasswortE & Mid(sZeichensatzGB, Int(Rnd(1, Len(sZeichensatzGB) + 1)), 1)
+      Case "01"
+        sPasswortE = sPasswortE & Mid(sZeichensatzKB, Int(Rnd(1, Len(sZeichensatzKB) + 1)), 1)
+      Case "10"
+        sPasswortE = sPasswortE & Mid(sZeichensatzN, Int(Rnd(1, Len(sZeichensatzN) + 1)), 1)
+      Case "11"
+        sPasswortE = sPasswortE & Mid(sZeichensatzS, Int(Rnd(1, Len(sZeichensatzS) + 1)), 1)
+      End Select
+      iPosition = iPosition + 2
+      sBitfolge2 = ""
+    Next ' kCount
+  Next ' iCount
+ 
+  Return sPasswortE
+ 
+End ' EncodePW <--- Verschlüsseln
+ 
+ 
+Static Public Function DecodePW(sInput As String) As String ' <--- Entschlüsseln
+  Dim iCount As Integer
+  Dim sZeichen, sBitfolge8, sPasswortD As String
+ 
+  sPasswortD = ""
+  sBitfolge8 = ""
+ 
+  For iCount = 1 To Len(sInput)
+      sZeichen = Mid(sInput, iCount, 1)
+ 
+      If InStr(sZeichensatzGB, sZeichen) > 0 Then sBitfolge8 = sBitfolge8 & "00"
+      If InStr(sZeichensatzKB, sZeichen) > 0 Then sBitfolge8 = sBitfolge8 & "01"
+      If InStr(sZeichensatzN, sZeichen) > 0 Then sBitfolge8 = sBitfolge8 & "10"
+      If InStr(sZeichensatzS, sZeichen) > 0 Then sBitfolge8 = sBitfolge8 & "11"
+ 
+      If iCount Mod 4 = 0 Then
+         sPasswortD = sPasswortD & Chr(BitfolgeToDezimal(sBitfolge8))
+         sBitfolge8 = ""
+      Endif ' iCount MOD 4 = 0 ?
+  Next ' iCount
+ 
+  Return sPasswortD
+ 
+End ' DecodePW <--- Entschlüsseln
+ 
+Property Read Valid As Integer
+' Es wird geprüft, ob ein starkes Passwort eingegeben wurde.
+ 
+' *** Private Methoden ***
+ Private Function Valid_Read() As Integer
+  Dim iCount, iKB, IGB, iNUM, iSZ As Integer
+  Dim sInput, sZeichen, sZeichensatz As String
+ 
+  If Not Me.Passwort Then 
+     Return -1  
+  Else
+     sInput = Me.Passwort
+  Endif ' Not Me.Passwort ?
+ 
+  For iCount = 1 To Len(sInput)
+      sZeichen = Mid(sInput, iCount, 1)
+      sZeichensatz = sZeichensatzGB & sZeichensatzKB & sZeichensatzN & sZeichensatzS
+      If InStr(sZeichensatz, sZeichen) = 0 Then
+         Return -2
+      Endif '  Passwort mit mindestens 1 unzulässigen Zeichen ?
+  Next ' iCount
+ 
+  For iCount = 1 To Len(sInput)
+      sZeichen = Mid(sInput, iCount, 1)
+      If InStr(sZeichensatzKB, sZeichen) <> 0 Then
+         iKB = 1
+      Endif ' Passwort mit mindestens 1 kleinen Buchstaben ?
+  Next ' iCount
+ 
+  For iCount = 1 To Len(sInput)
+      sZeichen = Mid(sInput, iCount, 1)
+      If InStr(sZeichensatzGB, sZeichen) <> 0 Then
+         iGB = 1
+      Endif ' Passwort mit mindestens 1 Großbuchstaben ?
+  Next ' iCount
+ 
+  For iCount = 1 To Len(sInput)
+      sZeichen = Mid(sInput, iCount, 1)
+      If InStr(sZeichensatzN, sZeichen) <> 0 Then
+         iNUM = 1
+      Endif ' Passwort mit mindestens 1 Ziffer ?
+  Next ' iCount
+ 
+  For iCount = 1 To Len(sInput)
+      sZeichen = Mid(sInput, iCount, 1)
+      If InStr(sZeichensatzS, sZeichen) <> 0 Then
+         iSZ = 1
+      Endif ' Passwort mit mindestens 1 Sonderzeichen ?
+  Next ' iCount
+ 
+  If iKB + iGB + iNUM + iSZ < 4 Then Return -3  
+  If Len(Me.Passwort) < 8 Then Return -4  
+  Return 0
+ 
+End ' Valid_Read()
+ 
+Static Private Function BitfolgeToDezimal(sEingabe As String) As Integer
+  Dim iCount, iDezimal As Integer
+  Dim sStelle As String
+ 
+  For iCount = 0 To Len(sEingabe) - 1
+      sStelle = Mid(sEingabe, Len(sEingabe) - iCount, 1)
+      iDezimal = iDezimal + CInt(sStelle) * 2 ^ iCount
+  Next ' iCount
+ 
+  Return iDezimal
+ 
+End ' BitfolgeToDezimal' Gambas class file

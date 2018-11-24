@@ -1,0 +1,193 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,38,73)
+  { TabStrip1 TabStrip
+    MoveScaled(0,0,112,74)
+    Count = 2
+    Index = 0
+    Text = ("Dein Team")
+    { Label2 Label
+      MoveScaled(0,11,24,4)
+      Text = ("Pokemon 2")
+    }
+    { TextBox2 TextBox
+      MoveScaled(0,17,24,4)
+      Text = ("TextBox2")
+    }
+    { TextBox3 TextBox
+      MoveScaled(0,28,24,4)
+      Text = ("TextBox3")
+    }
+    { Label4 Label
+      MoveScaled(0,34,24,4)
+      Text = ("Pokemon4")
+    }
+    { TextBox4 TextBox
+      MoveScaled(0,40,24,4)
+      Text = ("TextBox4")
+    }
+    { TextBox5 TextBox
+      MoveScaled(0,51,24,4)
+      Text = ("TextBox5")
+    }
+    { Label6 Label
+      MoveScaled(0,57,24,4)
+      Text = ("Pokemon6")
+    }
+    { TextBox6 TextBox
+      MoveScaled(0,62,24,4)
+      Text = ("TextBox6")
+    }
+    { Label3 Label
+      MoveScaled(0,22,24,4)
+      Text = ("Pokemon3")
+    }
+    { Label5 Label
+      MoveScaled(0,45,24,4)
+      Text = ("Pokemon5")
+    }
+    { TextBox1 TextBox
+      MoveScaled(0,5,24,4)
+      Text = ("TextBox1")
+    }
+    { Label1 Label
+      MoveScaled(0,0,24,4)
+      Text = ("Pokemon1")
+    }
+    { Separator1 Separator
+      MoveScaled(25,-1,3,71)
+    }
+    { Separator2 Separator
+      MoveScaled(34,-1,3,71)
+    }
+    { Separator3 Separator
+      MoveScaled(45,-1,3,71)
+    }
+    { Separator4 Separator
+      MoveScaled(55,-1,3,71)
+    }
+    { Separator5 Separator
+      MoveScaled(65,-1,3,71)
+    }
+    { Separator6 Separator
+      MoveScaled(71,-1,3,71)
+    }
+    { Separator7 Separator
+      MoveScaled(79,-1,3,71)
+    }
+    { Label13 Label
+      MoveScaled(29,0,4,4)
+      Text = ("KP")
+    }
+    { ValueBox1 ValueBox
+      MoveScaled(27,5,7,4)
+      Text = ("ValueBox1")
+    }
+    { ValueBox2 ValueBox
+      MoveScaled(27,17,7,4)
+      Text = ("ValueBox1")
+    }
+    { ValueBox3 ValueBox
+      MoveScaled(27,28,7,4)
+      Text = ("ValueBox1")
+    }
+    { ValueBox4 ValueBox
+      MoveScaled(27,40,7,4)
+      Text = ("ValueBox1")
+    }
+    { ValueBox5 ValueBox
+      MoveScaled(27,51,7,4)
+      Text = ("ValueBox1")
+    }
+    { ValueBox6 ValueBox
+      MoveScaled(27,62,7,4)
+      Text = ("ValueBox1")
+    }
+    Index = 1
+    Text = ("Gegner")
+    { Label9 Label
+      MoveScaled(0,22,24,4)
+      Text = ("Pokemon3")
+    }
+    { Label11 Label
+      MoveScaled(0,45,24,4)
+      Text = ("Pokemon5")
+    }
+    { Label7 Label
+      MoveScaled(0,0,24,4)
+      Text = ("Pokemon1")
+    }
+    { Label8 Label
+      MoveScaled(0,11,24,4)
+      Text = ("Pokemon 2")
+    }
+    { TextBox7 TextBox
+      MoveScaled(0,17,24,4)
+      Text = ("TextBox2")
+    }
+    { Label10 Label
+      MoveScaled(0,34,24,4)
+      Text = ("Pokemon4")
+    }
+    { Label12 Label
+      MoveScaled(0,57,24,4)
+      Text = ("Pokemon6")
+    }
+    { TextBox10 TextBox
+      MoveScaled(0,62,24,4)
+      Text = ("TextBox6")
+    }
+    { TextBox11 TextBox
+      MoveScaled(0,28,24,4)
+      Text = ("TextBox3")
+    }
+    { TextBox9 TextBox
+      MoveScaled(0,51,24,4)
+      Text = ("TextBox5")
+    }
+    { TextBox8 TextBox
+      MoveScaled(0,40,24,4)
+      Text = ("TextBox4")
+    }
+    { TextBox12 TextBox
+      MoveScaled(0,5,24,4)
+      Text = ("TextBox1")
+    }
+    { Separator8 Separator
+      MoveScaled(25,-1,3,71)
+    }
+    { ValueBox7 ValueBox
+      MoveScaled(27,5,7,4)
+      Text = ("ValueBox1")
+    }
+    { ValueBox8 ValueBox
+      MoveScaled(27,17,7,4)
+      Text = ("ValueBox1")
+    }
+    { ValueBox9 ValueBox
+      MoveScaled(27,28,7,4)
+      Text = ("ValueBox1")
+    }
+    { ValueBox10 ValueBox
+      MoveScaled(27,40,7,4)
+      Text = ("ValueBox1")
+    }
+    { ValueBox11 ValueBox
+      MoveScaled(27,51,7,4)
+      Text = ("ValueBox1")
+    }
+    { ValueBox12 ValueBox
+      MoveScaled(27,62,7,4)
+      Text = ("ValueBox1")
+    }
+    { Separator9 Separator
+      MoveScaled(34,-1,3,71)
+    }
+    { Label14 Label
+      MoveScaled(29,0,4,4)
+      Text = ("KP")
+    }
+    Index = 0
+  }
+}

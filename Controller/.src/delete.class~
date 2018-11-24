@@ -1,0 +1,41 @@
+' Gambas class file
+
+ Static Public Sub Folder_delete(folder As String)
+ Dim file As String
+ Dim file_ As String
+ Dim folderTemp As String[]
+ Dim i As Integer
+   ' zunächst alle Dateien löschen
+   File_delete(folder) 
+   ' alle Unterverzeichnisse löschen 
+   For Each file In RDir(folder)
+     file_ = folder & "/" & File
+     folderTemp = Split(file_, "/")
+     Try Rmdir file_
+     If error.code = 0 And file_ = folder Then
+        Return 
+     End If    
+     If error.code = 0 Then ' Verzeichnis wurde gelöscht
+       i = 1
+       Do
+           'versuchen das oder die Elternverzeichnis zu löschen
+           file_ = Left(file_, Len(file_) - Len(folderTemp[folderTemp.Count - i]) - 1)
+           Try Rmdir file_
+           If error.code = 0 And file_ = folder Then 
+               Return 
+           End If     
+           i = i + 1
+       Loop Until error.code = 42 Or error.code = 38 'Verzeichnis nicht leer
+     End If
+   Next
+ End
+ 
+ Static Public Sub File_delete(folder As String)
+ Dim file As String
+ Dim file_ As String
+ 'alle Dateien löschen
+   For Each file In RDir(folder, "*")  ' *.* nur Dateien mit Endung werden gelöscht  
+   file_ = folder & "/" & File         ' * auch Dateien ohne Endung werden gelöscht
+   Try Kill file_ 
+ Next
+ End 

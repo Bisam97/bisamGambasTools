@@ -1,0 +1,15 @@
+' Gambas module file
+
+Server As New ServerSocket("hi", 2) As "TicTacToc"
+
+Public Sub Start()
+
+  Server
+
+End
+
+Public Sub Main()
+
+  Print "Starting Server"
+
+End

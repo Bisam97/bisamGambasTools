@@ -1,0 +1,17 @@
+[Breakpoints]
+Count=0
+
+[DebugWindow]
+Count=0
+
+[OpenFile]
+File[1]=".src/FMain.form"
+Active=4
+File[2]=".src/FMain.class:0.29"
+Count=4
+File[3]=".src/FPlayer.form"
+File[4]=".src/FPlayer.class:17.33"
+
+[Watches]
+Count=0
+

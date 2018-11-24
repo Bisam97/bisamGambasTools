@@ -1,0 +1,5 @@
+' Gambas class file
+
+Static Public User As String
+Static Public IP As String
+Static Public Passwort As String

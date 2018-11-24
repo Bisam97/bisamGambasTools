@@ -1,0 +1,61 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,62,37)
+  FullScreen = True
+  { TabPanel1 TabPanel
+    MoveScaled(0,-1,62,39)
+    Count = 2
+    Index = 0
+    Text = ("Player")
+    { LCDLabel1 LCDLabel
+      MoveScaled(1,24,59,10)
+      Font = Font["+9"]
+    }
+    { Timer1 #Timer
+      #MoveScaled(8,24)
+      Delay = 10
+    }
+    { Button4 Button
+      MoveScaled(30,14,8,8)
+      Picture = Picture["icon:/22/file-manager"]
+    }
+    { Button3 Button
+      MoveScaled(20,14,8,8)
+      Picture = Picture["icon:/22/stop"]
+    }
+    { Button2 Button
+      MoveScaled(11,14,8,8)
+      Picture = Picture["icon:/22/pause"]
+    }
+    { Slider1 Slider
+      MoveScaled(1,8,58,4)
+    }
+    { Button6 Button
+      MoveScaled(50,14,9,8)
+      Picture = Picture["icon:/22/first"]
+    }
+    { Button1 Button
+      MoveScaled(1,14,8,8)
+      Picture = Picture["icon:/22/play"]
+    }
+    { Button5 Button
+      MoveScaled(39,14,9,8)
+      Picture = Picture["icon:/22/last"]
+    }
+    { LCDLabel2 LCDLabel
+      MoveScaled(18,2,24,4)
+    }
+    { Button7 Button
+      MoveScaled(52,2,9,4)
+      Text = ("Exit")
+    }
+    Index = 1
+    Text = ("Playlist")
+    { TextArea1 TextArea
+      MoveScaled(0,0,62,34)
+      ReadOnly = True
+    }
+    Index = 0
+  }
+}

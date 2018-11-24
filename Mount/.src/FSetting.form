@@ -1,0 +1,41 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,64)
+  { Frame1 Frame
+    MoveScaled(1,3,62,24)
+    Text = ("Allgemeine Einstellungen")
+    { Label1 Label
+      MoveScaled(1,4,24,4)
+      Text = ("Ip des Raspberry Pi")
+    }
+    { IP ValueBox
+      MoveScaled(1,8,24,4)
+      Type = ValueBox.IPAddress
+    }
+    { Label2 Label
+      MoveScaled(29,4,24,4)
+      Text = ("User / Benutzer ")
+    }
+    { User TextBox
+      MoveScaled(29,8,24,4)
+    }
+    { Label_Pass Label
+      MoveScaled(1,13,24,4)
+      Text = ("Passwort von")
+    }
+    { Passwort TextBox
+      MoveScaled(1,17,24,4)
+    }
+  }
+  { Speichern Button
+    MoveScaled(4,59,16,4)
+    Text = ("Speichern")
+    Picture = Picture["icon:/16/ok"]
+  }
+  { Abrechen Button
+    MoveScaled(37,59,16,4)
+    Text = ("Abrechen")
+    Picture = Picture["icon:/16/cancel"]
+  }
+}

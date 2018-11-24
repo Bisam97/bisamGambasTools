@@ -1,0 +1,116 @@
+' Gambas class file
+
+ Public I As String
+ Private Proess As Process
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+CSsh.Open_ssh(CVarSave.IP, CVarSave.Benutzter)
+MDR_TH.Enabled = False
+Antene_Th.Enabled = False
+Landeswelle.Enabled = False
+End
+
+Public Sub MDR_TH_Click()
+
+  Print Path()
+  Shell "sh " & Path() & "play1Radio.sh" 
+  Wait 1
+  Timer1_Timer()
+  Catch
+   Message.Error(Error.Text, "ok")
+End
+
+Public Sub Antene_Th_Click()
+
+  
+ Shell "sh " & Path() & "play3Radio.sh"
+  Wait 1
+ Timer1_Timer()
+ Catch
+   Message.Error(Error.Text, "ok")
+End
+
+Public Sub Landeswelle_Click()
+
+ 
+  Shell "sh " & Path() & "play2Radio.sh" 
+  Wait 1
+  Timer1_Timer()
+ Catch
+   Message.Error(Error.Text, "ok")
+End
+
+Public Sub load_Click()
+
+   Shell "sh " & Path() & "loadplaylist.sh" 
+ 
+Shell "sh " & Path() & "mpcmin.sh" 
+MDR_TH_Click()
+Wait 3
+Antene_Th_Click()
+Wait 3
+Landeswelle_Click()
+Wait 3
+Stop_Click()
+Shell "sh " & Path() & "mpcmax.sh" 
+ MDR_TH.Enabled = True
+Antene_Th.Enabled = True
+Landeswelle.Enabled = True
+Timer1.Start
+Catch
+   Message.Error(Error.Text, "ok")
+End
+
+Static Public Sub Path() As String
+   Dim textt As String
+   textt = "/home/" & User.Name & "/.Radio/" 
+  
+
+  Return textt
+  
+End
+
+Public Sub Stop_Click()
+
+  Shell "sh " & Path() & "RadioStop.sh" 
+Catch
+   Message.Error(Error.Text, "ok")
+End
+
+Public Sub aus_Click()
+
+  Shell "sh " & Path() & "play2Radio.sh"
+  Shell "sh " & Path() & "aus.sh"
+ Catch
+   Message.Error(Error.Text, "ok")
+
+End
+
+Public Sub Timer1_Timer()
+ Dim sline As String
+  Shell "sh " & Path() & "mpcinfo.sh" To sline
+ TextArea1.Text = sline
+ 
+ 
+ 
+ 
+ Catch
+   Message.Error(Error.Text, "ok")
+End
+
+
+
+
+Public Sub Playlist_Click()
+  Dim sline As String
+   Shell "sh " & Path() & "mpcplaylist.sh" To sline
+   TextArea1.Text = sline
+
+  Catch
+     Message.Error(Error.Text, "ok")
+
+End

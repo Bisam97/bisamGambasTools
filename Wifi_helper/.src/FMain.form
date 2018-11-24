@@ -1,0 +1,72 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,50,58)
+  Icon = Picture["icon:/16/server"]
+  { !SSID TextBox
+    MoveScaled(10,6,24,4)
+    #Public = True
+  }
+  { !PW TextBox
+    MoveScaled(10,21,24,4)
+    #Public = True
+    Password = True
+  }
+  { !DS RadioButton Verbindungsart
+    Name = "DS"
+    MoveScaled(10,28,24,4)
+    #Public = True
+    Text = ("3DS Kompatipel")
+  }
+  { CheckBox1 CheckBox
+    MoveScaled(34,21,3,4)
+  }
+  { Button1 Button
+    MoveScaled(30,52,16,4)
+    Text = (" Starten")
+    Picture = Picture["icon:/22/connect"]
+  }
+  { PictureBox1 PictureBox
+    MoveScaled(37,22,3,3)
+    Picture = Picture["icon:/16/lamp"]
+  }
+  { NZone_nMD RadioButton Verbindungsart
+    Name = "NZone_nMD"
+    MoveScaled(10,34,18,4)
+    ToolTip = ("NintendoSpotPass1")
+    Text = ("Nintendo Zone ")
+  }
+  { NZone_MD RadioButton Verbindungsart
+    Name = "NZone_MD"
+    MoveScaled(10,40,24,4)
+    ToolTip = ("NZ@McD1")
+    Text = ("Nintendo Zone ")
+  }
+  { Label1 Label
+    MoveScaled(10,1,24,4)
+    Text = ("SSID")
+  }
+  { Label2 Label
+    MoveScaled(10,16,24,4)
+    Text = ("Passwort")
+  }
+  { lock PictureBox
+    MoveScaled(34,6,3,4)
+    Picture = Picture["icon:/22/lock"]
+  }
+  { unlock PictureBox
+    MoveScaled(34,6,3,4)
+    Picture = Picture["icon:/22/unlock"]
+  }
+  { NZone_NWS RadioButton Verbindungsart
+    Name = "NZone_NWS"
+    MoveScaled(10,46,24,4)
+    ToolTip = ("attwifi")
+    Text = ("Nintendo Zone ")
+  }
+  { settigs Button
+    MoveScaled(3,52,16,4)
+    Text = ("Einstellung")
+    Picture = Picture["icon:/22/wizard"]
+  }
+}

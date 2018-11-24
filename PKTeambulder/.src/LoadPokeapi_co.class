@@ -1,0 +1,117 @@
+' Gambas class file
+
+
+Static Public PkList As New String[]
+
+Static Public Sub loadList() 
+  
+  Dim s As String 
+  Dim f As File
+
+ 
+  f = Open "/etc/.Bisam97/Pokemonlist.data" For Read
+ While Not Eof(f)
+   Line Input #f, s
+   PkList.Add(s)
+   Wend
+   
+   PkList = RemoveDuplicates(PkList)
+ 
+End
+
+
+Static Public Sub decodeJSON(pkname As String) As Collection
+  
+ Dim c As New Collection
+ Dim f As File
+ Dim a As String
+ 
+   f = Open User.Home & "/.dv/pkteam/" & pkname & ".data" For Read
+   While Not Eof(f)
+    
+    Line Input #f, a
+    c = JSON.Decode(a) 
+  
+   Wend
+  End
+
+Static Public Function getFile(url As String) As String
+  Dim h As HttpClient
+  Dim buffer As String
+  
+  buffer = Null
+  h = New HttpClient As "h"
+  h.URL = url
+  h.Get() ' Mit der Get-Methode die Website anfordern
+  
+  Do While h.Status <> 0
+    Wait 0.01
+  Loop
+
+  ' Wenn die Antwort OK ist gehts weiter
+  If h.Status >= 0 Then
+    ' Wenn die Datei was beinhaltet...
+    If Lof(h) Then 
+      ' lade sie runter -> in den string buffer
+      Read #h, buffer, Lof(h)
+    End If 
+  End If
+
+  Return buffer
+End
+
+' Static Public Function saveFile()
+'   
+'   Dim dl As String
+'   Dim iPkNr As Integer
+'   Dim sUrlPart As String
+'   Dim sPkname As String
+'   
+'   Mkdir User.Home & "/.dv/pkteam"
+'   sUrlPart = "http://pokeapi.co/api/v1/pokemon/"
+'   
+'   For iPkNr = 0 To 718 Step 1
+'    
+'     iPkNr += 1
+'     dl = getFile(sUrlPart & iPkNr & "/")
+'     iPkNr -= 1
+'     sPkname = PkList[iPkNr]
+'     File.Save(User.Home & "/.dv/pkteam/" & sPkname & ".data", dl)
+'     
+'     FFirstStart.ProgressBar1.Value = iPkNr / PkList.Count
+'     FFirstStart.Label1.Text = "get " & sPkname
+'     
+'   Next
+'   
+' End
+Static Public Function RemoveDuplicates(sArray As String[]) As String[]
+  Dim s As String
+  Dim tempArray As New String[]
+  For Each s In sArray
+     If tempArray.Find(s) = -1 Then tempArray.Add(s)
+  Next
+  Return tempArray
+End
+
+Static Public Function saveFile(iPkNr As Integer)
+  
+  Dim dl As String
+ ' Dim iPkNr As Integer
+  Dim sUrlPart As String
+  Dim sPkname As String
+  
+ 
+  sUrlPart = "http://pokeapi.co/api/v1/pokemon/"
+  
+  
+   
+    iPkNr += 1
+    dl = getFile(sUrlPart & iPkNr & "/")
+    iPkNr -= 1
+    sPkname = PkList[iPkNr]
+    File.Save(User.Home & "/.dv/pkteam/" & sPkname & ".data", dl)
+    
+    
+  
+End
+

@@ -1,0 +1,9 @@
+# Gambas Project File 3.0
+Title=DataListRename
+Startup=Main
+Version=0.0.1
+Arguments=[["/home/bisam97/Downloads/MiniFlags","/home/bisam97/countries.csv"]]
+CurrentArgument=1
+TabSize=2
+Language=en_US
+Packager=1

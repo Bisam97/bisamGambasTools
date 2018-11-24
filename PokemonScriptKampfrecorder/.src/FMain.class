@@ -1,0 +1,41 @@
+' Gambas class file
+
+Public Sub _new()
+
+End
+
+Public Sub Form_Open()
+
+End
+
+Public Sub Button1_Click()
+If Exist(User.Home & "/.dv/gifs") Then
+  FnewBattle.Show()
+Else
+  DLC()
+Endif
+End
+
+Private Sub DLC()
+  
+  Dim x As String
+    If Exist(User.Home & "/.dv") = False Then
+      Mkdir User.Home & "/.dv"
+    Endif
+    If Exist(User.Home & "/.dv/gifs") = True Then
+    Shell "rm -r " & User.Home & "/.dv/gifs"
+    Endif
+ 
+    FConsole.Show()
+    Wait 1
+    x = CString("wget -P" & User.Home & "/.dv/ https://www.dropbox.com/s/7iv37wwrzzw12h6/gifs.tar.gz")
+    FConsole.eingabe(x)
+    FConsole.eingabe("cd .dv")
+    x = CString("tar -xzf gifs.tar.gz")
+    FConsole.eingabe(x)
+    While Not Exist(User.Home & "/.dv/gifs")
+    Wait 1 
+    
+    Wend
+  
+End

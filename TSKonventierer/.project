@@ -1,0 +1,21 @@
+# Gambas Project File 3.0
+# Compiled with Gambas 3.10.0
+Title=TSConverter
+Startup=FMain
+Version=0.5.0
+Component=gb.image
+Component=gb.gui
+Component=gb.form
+TabSize=2
+Language=en_US
+Maintainer=bisam97
+Address=bisam97@bisam97.de
+Url=http://www.bisam97.de/
+License=General Public License
+PackageName=tskonventierer-0.5.0
+Packager=1
+Systems=autotools
+Menus=ubuntu:"Applications/Editors"
+Categories=ubuntu:"Video"
+Groups=ubuntu:"video"
+ExtraDependencies=ubuntu:"ffmpeg\t2.7.5-0\t"

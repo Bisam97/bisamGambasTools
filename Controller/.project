@@ -1,0 +1,19 @@
+# Gambas Project File 3.0
+# Compiled with Gambas 3.1.1
+Title=Radio
+Startup=HalloWilkommen
+Version=0.0.1
+Component=gb.image
+Component=gb.gui
+Component=gb.form
+Component=gb.settings
+TabSize=2
+ExecPath=/home/knoppix/Desktop/Controller.gambas
+Maintainer=knoppix
+Address=knoppix@Microknoppix
+License=General Public License
+PackageName=controller-0.0
+Packager=1
+Systems=debian
+Menus=debian:"Applications/Sound"
+Groups=debian:"sound"

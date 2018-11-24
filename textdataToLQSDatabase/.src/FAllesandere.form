@@ -1,0 +1,46 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,64,75)
+  { !TextArea1 TextArea
+    MoveScaled(10.625,10,16,53)
+    #Public = True
+    ScrollBar = Scroll.Vertical
+  }
+  { !TextArea2 TextArea
+    MoveScaled(37,10,16,53)
+    #Public = True
+    ScrollBar = Scroll.Vertical
+  }
+  { Label1 Label
+    MoveScaled(10.625,6,16,4)
+    Text = ("Felder")
+  }
+  { Label2 Label
+    MoveScaled(37.25,6,16,4)
+    Text = ("Datei Typ")
+  }
+  { Button1 Button
+    MoveScaled(4,70,16,4)
+    Text = ("Ok")
+    Picture = Picture["icon:/22/apply"]
+  }
+  { Button2 Button
+    MoveScaled(24,70,16,4)
+    Text = ("Clear")
+    Picture = Picture["icon:/22/remove"]
+  }
+  { Button3 Button
+    MoveScaled(44,70,16,4)
+    Text = ("Exit")
+    Picture = Picture["icon:/16/quit"]
+  }
+  { !TextBox1 TextBox
+    MoveScaled(37,2,24,4)
+    #Public = True
+  }
+  { Label3 Label
+    MoveScaled(17,2,19,4)
+    Text = ("Daten Tabelen Namen")
+  }
+}

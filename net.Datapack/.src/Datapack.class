@@ -1,0 +1,101 @@
+' Gambas class file
+
+Property Read Data As Object[]
+Property Read DataType As Integer ''For selecting the data depending on the data type. 0 is Custom. For your own Classes. 1 is a String. 2 is a Integer. 3 is a Boolean.
+Private $Data As Object[]
+Private $DataType As Integer
+
+Public Sub _new(DataType As Integer, Data As Object[])
+
+  $Data = Data
+  $DataType = DataType
+
+End
+
+Private Function DataType_Read() As Integer
+
+  Return $DataType
+
+End
+
+Private Function Data_Read() As Object[]
+
+  Return $Data
+
+End
+
+Public Sub Send(ListOfReceiver As Socket) As Datapack ''Select the DataType and send the Data to everyone in the ListOfReceiver!    If the data type is 0 then the function uses the "object.send" function to get a record of the data to be sent (as a string).
+
+  Dim s As String[]
+  Dim d As Object
+  Dim sendS As String
+  Dim tp As String
+
+  Select $DataType
+    Case 0 'Custom
+
+      sendS = "<DATAPACK|" & $DataType & "|" ''Next come the data to be sent
+
+      For Each d In $Data
+
+        s = d.Send()
+        sendS &= "<NEXTOBJ|"
+
+        For Each tp In s
+
+          sendS &= tp & "|"
+
+        Next
+
+        sendS &= ">|"
+
+      Next
+      sendS &= "ENDDATAPACK>"
+
+    Case 1 'Integer
+
+      sendS = "<DATAPACK|" & $DataType & "|" ''Next come the data to be sent
+
+      For Each d In $Data
+
+        sendS &= "<NEXTOBJ|"
+
+        For Each tp In s
+
+          sendS &= tp & "|"
+
+        Next
+
+        sendS &= ">|"
+      Next
+  End Select
+  Print sendS
+  Return Me
+
+End
+
+Static Public Sub CostumReceive(ReceiveString As String) As String[][]
+
+  Dim s As String[]
+  Dim i As Integer
+  Dim re As String[][]
+  Dim r As String
+  Dim ii As Integer
+  Dim ns As String[]
+
+  s = Split(ReceiveString, "|")
+  re = New String[][]
+  For Each r In s
+
+    If r = "<NEXTOBJ" Then
+      ns = New String[]
+      For i = ii + 1 To s.Find(">",, ii) - 1
+        ns.Push(s[i])
+      Next
+      re.Add(ns)
+    Endif
+    ii += 1
+  Next
+  Return re
+
+End

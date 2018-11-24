@@ -1,0 +1,18 @@
+# Gambas Project File 3.0
+# Compiled with Gambas 3.1.1
+Title=MH4GEventQuestDL
+Startup=FMain
+Version=0.0.1
+Component=gb.image
+Component=gb.gui
+Component=gb.form
+TabSize=2
+Maintainer=knoppix
+Address=knoppix@Microknoppix
+License=General Public License
+PackageName=mh4g_quest_dl-0.0
+Packager=1
+Systems=debian
+Menus=debian:"Applications/System/Administration"
+Categories=debian:"System"
+Groups=debian:"admin"

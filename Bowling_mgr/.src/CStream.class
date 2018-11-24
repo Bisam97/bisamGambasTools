@@ -1,0 +1,98 @@
+' Gambas class file
+
+Static Private Bowling As File
+
+Static Public Sub Open_Stream()
+  If Exist("/home/" & System.User.Name & "/.Bowling/Ergebinss.data")
+  Bowling = Open "/home/" & System.User.Name & "/.Bowling/Ergebinss.data" For Read Write
+  load_Ergebnise()
+  Else
+   Mkdir System.User.Home &/ ".Bowling"
+    Bowling = Open System.User.Home &/ ".Bowling/Ergebinss.data" For Read Write Create
+    Bowling.Close
+    Bowling = Open System.User.Home &/ ".Bowling/Ergebinss.data" For Read Write
+    load_Ergebnise()
+  Endif
+End
+
+Static Private Sub load_Ergebnise()
+  Dim s As String 
+  Dim x As Integer
+  FMain.ListBox1.Clear
+  While Not Eof(Bowling)
+  
+     Line Input #Bowling, s
+     x += 1
+     Print s
+    FMain.ListBox1.Add(s, x)
+    CVal.s.Add(s, x)
+    CVal.text = CVal.text & Chr(10) & s
+  Wend
+  Print CVal.text
+  Catch
+    Print Error.Text
+End
+
+
+
+Static Public Sub add_Ergebniss(s As String, bool As Boolean)
+  
+  Write #Bowling, s
+  s = Chr(10)
+  Write #Bowling, s
+  If bool == True Then
+ Bowling.Close()
+  Open_Stream()
+  Endif
+End
+
+Static Public Sub read_Stream(count As Integer) As String
+  Dim retunwert As String
+  retunwert = CVal.s[count]
+  
+
+   Return retunwert
+  Catch
+    'Print Error.Text
+  
+End
+
+Static Public Sub delete_Stream()
+  
+  Dim x As Integer
+  Dim y As Integer
+  Dim z As Integer
+  
+  x = FMain.ListBox1.Index
+  y = FMain.ListBox1.Count
+  CVal.text = ""
+  While z < y 
+    If z == x Then
+      
+   Else
+    If CVal.text == Null Then
+      CVal.text = CString(FMain.ListBox1[z].Text)
+   Else
+      CVal.text = CVal.text & Chr(10) & CString(FMain.ListBox1[z].Text)
+   Endif
+   Endif
+   z += 1
+    
+  Wend
+  Print CVal.text
+  Print ""
+  Bowling.Close
+  Bowling = Open System.User.Home &/ ".Bowling/Ergebinss.data" For Read Write Create
+  Bowling.Close
+  Bowling = Open System.User.Home &/ ".Bowling/Ergebinss.data" For Read Write 
+  add_Ergebniss(CVal.text, True)
+End
+
+
+ Static Public Sub Close_Stream()
+  
+  Bowling.Close()
+  
+  
+End
+

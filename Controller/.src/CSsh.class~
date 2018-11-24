@@ -1,0 +1,22 @@
+' Gambas class file
+
+Static Private Radio As Process
+
+ Static Public Sub Open_ssh(ip As String, User As String)
+  Dim sLine As String
+  Dim sOutput As String
+   Shell "ssh " & "bisam97y" & "@" & ip & "sudo " To
+  
+ Wait 5
+  Flog.TextArea1.Text = sOutput
+ 
+  
+  
+End
+
+  
+Static Public Sub MyRa_Read()
+
+  
+  
+  End

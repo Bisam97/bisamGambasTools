@@ -1,0 +1,12 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  MoveScaled(0,0,50,17)
+  { Startus Label
+    MoveScaled(0,3,50,4)
+    Text = ("Label1")
+  }
+  { Startusbar ProgressBar
+    MoveScaled(0,8,50,4)
+  }
+}

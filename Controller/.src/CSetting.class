@@ -1,0 +1,20 @@
+' Gambas class file
+
+Static Public Sub LoadConf()
+  Dim Conf As New Settings
+  
+  CVarSave.Benutzter = Conf["Rasperry/User", User.Name]
+  CVarSave.IP = Conf["Rasperry/IP", "0.0.0.0"]
+  CVarSave.PS = Conf["Rasperry/Passwort", ""]
+  CVarSave.FirtsRun = Conf["Main/First", "false"]
+  
+End
+
+Static Public Sub SaveConf()
+   Dim Conf As New Settings
+    Conf["Rasperry/User"] = CVarSave.Benutzter
+    Conf["Rasperry/IP"] = CVarSave.IP
+    Conf["Rasperry/Passwort"] = CVarSave.PS
+    Conf["Main/First"] = CVarSave.FirtsRun
+  
+End

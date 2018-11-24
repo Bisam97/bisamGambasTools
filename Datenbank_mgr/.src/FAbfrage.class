@@ -1,0 +1,32 @@
+' Gambas class file
+
+
+Public Sub Abfrage_Click()
+
+  SearchName()
+  
+
+End
+
+Public Sub Form_Open()
+
+  DataView1.Create  'MConeckt.$Con.Exec("SELECT * FROM mysql.user")
+
+End
+
+       Public Procedure SearchName()
+                Dim $Query As String
+                Dim $Result As Result
+                Dim $Phone As String
+                Dim Name As String
+ 
+     $Query = "SELECT * FROM adressen"
+                $Result = MConeckt.$Con.Exec($Query)
+                Print $Result["Name"]
+                For Each Name In $Result[2]
+               
+                Print Name
+                Next
+                Catch 
+                Message.Error(Error.Text)
+       End

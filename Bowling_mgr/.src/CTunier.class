@@ -1,0 +1,326 @@
+' Gambas class file
+
+
+  Static Private SP1 As File
+  Static Private SP2 As File
+  Static Private SP3 As File
+  Static Private SP4 As File
+  Static Private SP5 As File
+  Static Private SP6 As File
+  Static Private SP7 As File
+  Static Private SP8 As File
+  
+ Static Public Spieltag1 As New String[]
+ Static Public Spieltag2 As New String[]
+ Static Public Spieltag3 As New String[]
+ Static Public Spieltag4 As New String[]
+ Static Public Spieltag5 As New String[]
+ Static Public Spieltag6 As New String[]
+ Static Public Spieltag7 As New String[]
+ Static Public Spieltag8 As New String[]
+ 
+Static Public Sub open_Streams()
+  If Exist(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag6.cfg") Then
+    SP1 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg" For Read Write
+    SP2 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag2.cfg" For Read Write
+    SP3 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag3.cfg" For Read Write
+    SP4 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag4.cfg" For Read Write
+    SP5 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag5.cfg" For Read Write
+    SP6 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag6.cfg" For Read Write
+    SP7 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag7.cfg" For Read Write
+    SP8 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag8.cfg" For Read Write
+    
+  Else
+    SP1 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg" For Read Write Create
+    SP2 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag2.cfg" For Read Write Create
+    SP3 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag3.cfg" For Read Write Create
+    SP4 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag4.cfg" For Read Write Create
+    SP5 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag5.cfg" For Read Write Create
+    SP6 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag6.cfg" For Read Write Create
+    SP7 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag7.cfg" For Read Write Create
+    SP8 = Open User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag8.cfg" For Read Write Create
+ 
+  
+  SP1.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg", "0 0 0 0 0 0 0")
+  SP2.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag2.cfg", "0 0 0 0 0 0 0")
+  SP3.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag3.cfg", "0 0 0 0 0 0 0")
+  SP4.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag4.cfg", "0 0 0 0 0 0 0")
+  SP5.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag5.cfg", "0 0 0 0 0 0 0")
+  SP6.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag6.cfg", "0 0 0 0 0 0 0")
+  SP7.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag7.cfg", "0 0 0 0 0 0 0")
+  SP8.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag8.cfg", "0 0 0 0 0 0 0")
+  
+  
+  Endif
+  
+End
+
+ 
+ 
+Static Public Sub read_all_in()
+  
+  Dim Spieltag As String
+  
+  Dim Spieltag1 As String[]
+  Dim Spieltag2 As String[]
+  Dim Spieltag3 As String[]
+  Dim Spieltag4 As String[]
+  Dim Spieltag5 As String[]
+  Dim Spieltag6 As String[]
+  Dim Spieltag7 As String[]
+  Dim Spieltag8 As String[]
+  
+  Dim Spiel1 As New Integer[]
+  Dim Spiel2 As New Integer[]
+  Dim Spiel3 As New Integer[]
+  Dim Spiel4 As New Integer[]
+  Dim Spiel5 As New Integer[]
+  Dim Spiel6 As New Integer[]
+  Dim Gesamt As New Integer[]
+  Dim Schnitt As New Float[]
+  
+  Spieltag = File.Load(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg")
+  Spieltag1 = Split(Spieltag, " ", "xxxxxx", True)
+  Spieltag = File.Load(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag2.cfg")
+  Spieltag2 = Split(Spieltag, " ", "xxxxxx", True)
+  Spieltag = File.Load(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag3.cfg")
+  Spieltag3 = Split(Spieltag, " ", "xxxxxx", True)
+  Spieltag = File.Load(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag4.cfg")
+  Spieltag4 = Split(Spieltag, " ", "xxxxxx", True)
+  Spieltag = File.Load(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag5.cfg")
+  Spieltag5 = Split(Spieltag, " ", "xxxxxx", True)
+  Spieltag = File.Load(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag6.cfg")
+  Spieltag6 = Split(Spieltag, " ", "xxxxxx", True)
+  Spieltag = File.Load(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag7.cfg")
+  Spieltag7 = Split(Spieltag, " ", "xxxxxx", True)
+  Spieltag = File.Load(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag8.cfg")
+ Spieltag8 = Split(Spieltag, " ", "xxxxxx", True)
+  Print Spieltag8.Count
+  Print Spieltag8[1]
+  Print Spieltag8.Count
+  Print CInteger(Spieltag8[0])
+  FMain.Ort1.Index = CInteger(Spieltag1[0]) 
+  FMain.Ort2.Index = CInteger(Spieltag2[0])
+  FMain.Ort3.Index = CInteger(Spieltag3[0])
+  FMain.Ort4.Index = CInteger(Spieltag4[0])
+  FMain.Ort5.Index = CInteger(Spieltag5[0])
+  FMain.Ort6.Index = CInteger(Spieltag6[0])
+  FMain.Ort7.Index = CInteger(Spieltag7[0])
+  FMain.Ort8.Index = CInteger(Spieltag8[0])
+  
+  Spiel1 = Load_Spiel1(Spieltag1, Spieltag2, Spieltag3, Spieltag4, Spieltag5, Spieltag6, Spieltag7, Spieltag8)
+  Spiel2 = Load_Spiel2(Spieltag1, Spieltag2, Spieltag3, Spieltag4, Spieltag5, Spieltag6, Spieltag7, Spieltag8)
+  Spiel3 = Load_Spiel3(Spieltag1, Spieltag2, Spieltag3, Spieltag4, Spieltag5, Spieltag6, Spieltag7, Spieltag8)
+  Spiel4 = Load_Spiel4(Spieltag1, Spieltag2, Spieltag3, Spieltag4, Spieltag5, Spieltag6, Spieltag7, Spieltag8)
+  Spiel5 = Load_Spiel5(Spieltag1, Spieltag2, Spieltag3, Spieltag4, Spieltag5, Spieltag6, Spieltag7, Spieltag8)
+  Spiel6 = Load_Spiel6(Spieltag1, Spieltag2, Spieltag3, Spieltag4, Spieltag5, Spieltag6, Spieltag7, Spieltag8)
+  
+  Gesamt = Add_Gesamt(Spiel1, Spiel2, Spiel3, Spiel4, Spiel5, Spiel6)
+  Display_Gesamt(Gesamt)
+  Div_Schitt(Gesamt)
+  
+  
+  Print Spieltag8[1]
+  
+  
+End
+
+Static Public Sub save_tunier_add()
+
+  ' SP1.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg", "Hallo")
+  ' SP2.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg", "Hallo")
+  ' SP3.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg", "Hallo")
+  ' SP4.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg", "Hallo")
+  ' SP5.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg", "Hallo")
+  ' SP6.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg", "Hallo")
+  ' SP7.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg", "Hallo")
+  ' SP8.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg", "Hallo")
+  
+  If CVal.ReadTunierNummer == 0 Then
+    SP1.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag1.cfg", FMain.Ort1.Index & " " & FAnder.Box1.Value & " " & FAnder.Box2.Value & " " & FAnder.Box3.Value & " " & FAnder.Box4.Value & " " & FAnder.Box5.Value & " " & FAnder.Box6.Value)
+  Else If CVal.ReadTunierNummer == 1 Then
+     SP1.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag2.cfg", FMain.Ort2.Index & " " & FAnder.Box1.Value & " " & FAnder.Box2.Value & " " & FAnder.Box3.Value & " " & FAnder.Box4.Value & " " & FAnder.Box5.Value & " " & FAnder.Box6.Value)
+
+  
+  Else If CVal.ReadTunierNummer == 2 Then
+    SP1.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag3.cfg", FMain.Ort3.Index & " " & FAnder.Box1.Value & " " & FAnder.Box2.Value & " " & FAnder.Box3.Value & " " & FAnder.Box4.Value & " " & FAnder.Box5.Value & " " & FAnder.Box6.Value)
+
+  Else If CVal.ReadTunierNummer == 3 Then
+     SP1.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag4.cfg", FMain.Ort4.Index & " " & FAnder.Box1.Value & " " & FAnder.Box2.Value & " " & FAnder.Box3.Value & " " & FAnder.Box4.Value & " " & FAnder.Box5.Value & " " & FAnder.Box6.Value)
+
+  Else If CVal.ReadTunierNummer == 4 Then
+     SP1.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag5.cfg", FMain.Ort5.Index & " " & FAnder.Box1.Value & " " & FAnder.Box2.Value & " " & FAnder.Box3.Value & " " & FAnder.Box4.Value & " " & FAnder.Box5.Value & " " & FAnder.Box6.Value)
+
+  Else If CVal.ReadTunierNummer == 5 Then
+     SP1.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag6.cfg", FMain.Ort6.Index & " " & FAnder.Box1.Value & " " & FAnder.Box2.Value & " " & FAnder.Box3.Value & " " & FAnder.Box4.Value & " " & FAnder.Box5.Value & " " & FAnder.Box6.Value)
+  Else If CVal.ReadTunierNummer == 6 Then
+     SP1.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag7.cfg", FMain.Ort7.Index & " " & FAnder.Box1.Value & " " & FAnder.Box2.Value & " " & FAnder.Box3.Value & " " & FAnder.Box4.Value & " " & FAnder.Box5.Value & " " & FAnder.Box6.Value)
+  Else If CVal.ReadTunierNummer == 7 Then
+     SP1.Save(User.Home & "/.Bowling/Jahr" & Year(Now) & "Spieltag8.cfg", FMain.Ort8.Index & " " & FAnder.Box1.Value & " " & FAnder.Box2.Value & " " & FAnder.Box3.Value & " " & FAnder.Box4.Value & " " & FAnder.Box5.Value & " " & FAnder.Box6.Value)
+
+  Else 
+    Message.Warning("ok? bug :D", "ok")
+  Endif
+  save_conf()
+End
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Static Private Sub Load_Spiel1(Spieltag1 As Integer[], Spieltag2 As Integer[], Spieltag3 As Integer[], Spieltag4 As Integer[], Spieltag5 As Integer[], Spieltag6 As Integer[], Spieltag7 As Integer[], Spieltag8 As Integer[]) As Integer[]
+  Dim Spiel1 As New Integer[]
+  Spiel1.Add(CInteger(Spieltag1[1]), 0)
+  Spiel1.Add(CInteger(Spieltag2[1]), 1)
+  Spiel1.Add(CInteger(Spieltag3[1]), 2)
+  Spiel1.Add(CInteger(Spieltag4[1]), 3)
+  Spiel1.Add(CInteger(Spieltag5[1]), 4)
+  Spiel1.Add(CInteger(Spieltag6[1]), 5)
+  Spiel1.Add(CInteger(Spieltag7[1]), 6)
+  Spiel1.Add(CInteger(Spieltag8[1]), 7)
+  
+  Return Spiel1
+  Catch
+    Message.Error(Error.Text & " " & Error.Code & " " & Error.Where, "ok")
+End
+  Static Private Sub Load_Spiel2(Spieltag1 As Integer[], Spieltag2 As Integer[], Spieltag3 As Integer[], Spieltag4 As Integer[], Spieltag5 As Integer[], Spieltag6 As Integer[], Spieltag7 As Integer[], Spieltag8 As Integer[]) As Integer[]
+  Dim Spiel1 As New Integer[]
+  Spiel1.Add(CInteger(Spieltag1[2]), 0)
+  Spiel1.Add(CInteger(Spieltag2[2]), 1)
+  Spiel1.Add(CInteger(Spieltag3[2]), 2)
+  Spiel1.Add(CInteger(Spieltag4[2]), 3)
+  Spiel1.Add(CInteger(Spieltag5[2]), 4)
+  Spiel1.Add(CInteger(Spieltag6[2]), 5)
+  Spiel1.Add(CInteger(Spieltag7[2]), 6)
+  Spiel1.Add(CInteger(Spieltag8[2]), 7)
+  
+  Return Spiel1
+  
+End
+  Static Private Sub Load_Spiel3(Spieltag1 As Integer[], Spieltag2 As Integer[], Spieltag3 As Integer[], Spieltag4 As Integer[], Spieltag5 As Integer[], Spieltag6 As Integer[], Spieltag7 As Integer[], Spieltag8 As Integer[]) As Integer[]
+  Dim Spiel1 As New Integer[]
+  Spiel1.Add(CInteger(Spieltag1[3]), 0)
+  Spiel1.Add(CInteger(Spieltag2[3]), 1)
+  Spiel1.Add(CInteger(Spieltag3[3]), 2)
+  Spiel1.Add(CInteger(Spieltag4[3]), 3)
+  Spiel1.Add(CInteger(Spieltag5[3]), 4)
+  Spiel1.Add(CInteger(Spieltag6[3]), 5)
+  Spiel1.Add(CInteger(Spieltag7[3]), 6)
+  Spiel1.Add(CInteger(Spieltag8[3]), 7)
+  Return Spiel1
+  
+End
+  Static Private Sub Load_Spiel4(Spieltag1 As Integer[], Spieltag2 As Integer[], Spieltag3 As Integer[], Spieltag4 As Integer[], Spieltag5 As Integer[], Spieltag6 As Integer[], Spieltag7 As Integer[], Spieltag8 As Integer[]) As Integer[]
+  Dim Spiel1 As New Integer[]
+  Spiel1.Add(CInteger(Spieltag1[4]), 0)
+  Spiel1.Add(CInteger(Spieltag2[4]), 1)
+  Spiel1.Add(CInteger(Spieltag3[4]), 2)
+  Spiel1.Add(CInteger(Spieltag4[4]), 3)
+  Spiel1.Add(CInteger(Spieltag5[4]), 4)
+  Spiel1.Add(CInteger(Spieltag6[4]), 5)
+  Spiel1.Add(CInteger(Spieltag7[4]), 6)
+  Spiel1.Add(CInteger(Spieltag8[4]), 7)
+  
+  Return Spiel1
+  
+End
+  Static Private Sub Load_Spiel5(Spieltag1 As Integer[], Spieltag2 As Integer[], Spieltag3 As Integer[], Spieltag4 As Integer[], Spieltag5 As Integer[], Spieltag6 As Integer[], Spieltag7 As Integer[], Spieltag8 As Integer[]) As Integer[]
+  Dim Spiel1 As New Integer[]
+  Spiel1.Add(CInteger(Spieltag1[5]), 0)
+  Spiel1.Add(CInteger(Spieltag2[5]), 1)
+  Spiel1.Add(CInteger(Spieltag3[5]), 2)
+  Spiel1.Add(CInteger(Spieltag4[5]), 3)
+  Spiel1.Add(CInteger(Spieltag5[5]), 4)
+  Spiel1.Add(CInteger(Spieltag6[5]), 5)
+  Spiel1.Add(CInteger(Spieltag7[5]), 6)
+  Spiel1.Add(CInteger(Spieltag8[5]), 7)
+  
+  Return Spiel1
+End
+
+  Static Private Sub Load_Spiel6(Spieltag1 As Integer[], Spieltag2 As Integer[], Spieltag3 As Integer[], Spieltag4 As Integer[], Spieltag5 As Integer[], Spieltag6 As Integer[], Spieltag7 As Integer[], Spieltag8 As Integer[]) As Integer[]
+  Dim Spiel1 As New Integer[]
+  Spiel1.Add(CInteger(Spieltag1[6]), 0)
+  Spiel1.Add(CInteger(Spieltag2[6]), 1)
+  Spiel1.Add(CInteger(Spieltag3[6]), 2)
+  Spiel1.Add(CInteger(Spieltag4[6]), 3)
+  Spiel1.Add(CInteger(Spieltag5[6]), 4)
+  Spiel1.Add(CInteger(Spieltag6[6]), 5)
+  Spiel1.Add(CInteger(Spieltag7[6]), 6)
+  Spiel1.Add(CInteger(Spieltag8[6]), 7)
+  
+  Return Spiel1
+  
+End
+
+  Static Private Sub Add_Gesamt(Spiel1 As Integer[], Spiel2 As Integer[], Spiel3 As Integer[], Spiel4 As Integer[], Spiel5 As Integer[], Spiel6 As Integer[]) As Integer[]
+  Dim x As Integer
+  Dim Gesamt As New Integer[]
+  While x < 6
+    Gesamt.Add(Spiel1[x] + Spiel2[x] + Spiel3[x] + Spiel4[x] + Spiel5[x] + Spiel6[x], x) 
+    x += 1
+    
+  Wend
+  Return Gesamt
+  
+End
+
+  Static Private Sub Display_Gesamt(Gesamt As Integer[])
+  
+  FMain.Gesamt1.Value = Gesamt[0]
+  FMain.Gesamt21.Value = Gesamt[1]
+  FMain.Gesamt3.Value = Gesamt[2]
+  FMain.Gesamt4.Value = Gesamt[3]
+  FMain.Gesamt5.Value = Gesamt[4]
+  FMain.Gesamt6.Value = Gesamt[5]
+  
+End
+
+  Static Private Sub Div_Schitt(Gesamt As Integer[])
+  Dim Gesumt As New Float[]
+  Dim Schnitt As New Float[]
+  Dim x As Integer
+  While x < 6
+    Gesumt.Add(CFloat(Gesamt[x]), x)
+    Schnitt.Add(Gesumt[x] / 6, x)
+    x += 1
+  Wend
+  Display_Schnitt(Schnitt)
+End
+
+Static Private Sub Display_Schnitt(Gesamt As Float[])
+  
+  FMain.Schnitt1.Value = Gesamt[0]
+  FMain.Schnitt2.Value = Gesamt[1]
+  FMain.Schnitt3.Value = Gesamt[2]
+  FMain.Schnitt4.Value = Gesamt[3]
+  FMain.Schnitt5.Value = Gesamt[4]
+  FMain.Schnitt6.Value = Gesamt[5]
+  
+End
+
+  Static Public Sub save_conf()
+  
+  Print "null"
+  Catch
+    Message.Error(Error.Text, "ok")
+End
+
+  

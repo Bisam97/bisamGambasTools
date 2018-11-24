@@ -1,0 +1,19 @@
+# Gambas Form File 3.0
+
+{ Form Form
+  Move(0,0,189,532)
+  #Scaled = False
+  Resizable = False
+  { !Findlist ListBox
+    Move(0,42,189,490)
+    #Public = True
+  }
+  { search TextBox
+    Move(0,7,147,28)
+  }
+  { Reload Button
+    Move(154,7,28,28)
+    ToolTip = ("Reload")
+    Picture = Picture["icon:/16/refresh"]
+  }
+}

@@ -1,0 +1,22 @@
+# Gambas Project File 3.0
+# Compiled with Gambas 3.1.1
+Title=HtmlTabelle
+Startup=FMain
+Version=1.5.0
+Component=gb.image
+Component=gb.gui
+Component=gb.form
+Description="Erstelt mit den eigen Angaben eine Html Tabelle"
+Authors="Bisam97"
+TabSize=2
+Maintainer=Bisam97
+Address=tobikimeister@gmail.com
+Url=http://www.youtube/Bisam97
+License=General Public License
+Prefix=1
+PackageName=gambas-htmltabelle-1.5
+Packager=1
+Systems=debian
+Menus=debian:"Applications/Editors"
+Categories=debian:"Development"
+Groups=debian:"editors"

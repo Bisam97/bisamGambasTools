@@ -1,0 +1,177 @@
+' Gambas class file
+
+Private Filename As String
+Private NFilename As String
+Private NFilePath As String
+
+Public Sub Form_Open()
+
+  
+
+End
+
+Public Sub Convert_Click()
+
+
+  Dim a As String
+  Filename = Test(FileIN.Text)
+  Print Filename
+  FileIN.Enabled = False
+  DirOUT.Enabled = False
+  FConsole.Show
+  FConsole.Timer1.Start
+  a = "ffmpeg -i " & FileIN.Text & " -threads 5 -copyts -vcodec copy -acodec copy "
+      If CheckBox1.Value Then
+        a &= "-bsf:a aac_adtstoasc "
+      Endif
+      a &= DirOUT.Text & "/" & Filename & ".mp4 && echo fertig"
+      Print a
+      FConsole.eingabe(a)
+
+End
+
+Private Sub Test(Filepath As String) As String
+  
+
+Dim iPos As Integer
+  
+  While Len(Filepath)
+    
+    iPos = InStr(Filepath, "/")
+    If iPos = 0 Then 
+        
+        Print Filepath
+        Return Filepath
+      
+      iPos = Len(Filepath)
+    Endif
+    Filepath = Mid$(Filepath, iPos + 1)
+    
+  Wend
+  
+End
+
+ 
+
+Public Sub Filesearch_Click()
+
+Dim Paths As String
+
+Dim Filepatha As New String[]
+Dim s As String
+  
+  Dialog.Title = "Choose a file"
+  Dialog.Filter = ["*.ts", "MPEG-TS", "*", "All files"]
+  Dialog.Path = User.Home
+  If Dialog.OpenFile(True) Then Return
+    
+  For Each Paths In Dialog.Paths
+    NFilePath = Paths
+    NFilename = Test(NFilePath)
+    Filepatha = Split(Paths, " ")
+        Paths = ""
+        For Each s In Filepatha
+          If Paths Then 
+            Paths = Paths & "\\ " & s 
+          Else
+            Paths = s
+          Endif
+        Next
+    FileIN.Text = Paths
+  Next
+  
+  
+        
+  Catch
+  Message.Info(Error.Text)
+End
+
+Public Sub Filesearch2_Click()
+
+  
+  If Dialog.SelectDirectory() Then Return
+  DirOUT.Text = Dialog.Path
+End
+Public Sub Filesize() As Long
+
+
+  FConsole.orgiglong = Stat(NFilePath).Size
+  Return Stat(DirOUT.Text & "/" & NFilename & ".mp4").Size
+  
+  
+  Catch
+    Print Error.Text
+    Return 0
+End
+
+
+
+
+
+Public Sub Button1_Click()
+
+Dim Paths As String
+Dim s As String
+Dim Filepatha As String[]
+Dim a As String
+
+  If Dialog.SelectDirectory() Then Return
+  
+  Convert.Enabled = False
+  Button1.Enabled = False
+  
+    For Each Paths In Dir(Dialog.Path, "*.ts")
+      
+      Paths = Dialog.Path & "/" & Paths
+      NFilePath = Paths
+      NFilename = Test(NFilePath)
+      Filepatha = Split(Paths, " ")
+      Paths = ""
+      
+      For Each s In Filepatha
+        
+        If Paths Then 
+          
+          Paths = Paths & "\\ " & s 
+          
+        Else
+          
+          Paths = s
+          
+        Endif
+        
+      Next
+      Print Paths
+      FileIN.Text = Paths
+      FConsole.Fertig = False
+      
+      Filename = Test(Paths)
+      Print Filename
+      
+      FileIN.Enabled = False
+      DirOUT.Enabled = False
+      
+      FConsole.Show
+      Wait 2
+      FConsole.Timer2.Start
+      a = "ffmpeg -i " & FileIN.Text & " -threads 5 -copyts -vcodec copy -acodec copy "
+      If CheckBox1.Value Then
+        a &= "-bsf:a aac_adtstoasc "
+      Endif
+      a &= DirOUT.Text & "/" & Filename & ".mp4 && echo fertig"
+      Print a
+      FConsole.eingabe(a)
+      
+      While FConsole.Fertig == False
+        Wait 1
+      Wend
+      
+      Convert.Enabled = True
+      Button1.Enabled = True
+      
+    Next
+  
+
+End
+
+

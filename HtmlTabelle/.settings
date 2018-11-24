@@ -1,0 +1,17 @@
+[Breakpoints]
+Count=0
+
+[DebugWindow]
+Count=0
+
+[OpenFile]
+File[1]=".src/FMain.form"
+File[2]=".src/CKonvertiren.class:59.75"
+Active=3
+File[3]=".src/FMain.class:94.3"
+File[4]=".src/CKonstand.class:7.0"
+Count=4
+
+[Watches]
+Count=0
+

@@ -1,0 +1,23 @@
+' Gambas class file
+
+
+Public Sub Form_Open()
+CSetting.LoadConf()
+If CVarSave.FirtsRun == "true" Then
+  FMain.Show
+  Me.Close
+Endif
+
+End
+
+
+Public Sub Button1_Click()
+
+  CVarSave.Benutzter = User.Text
+  CVarSave.IP = IP.Text
+  CVarSave.PS = Passwort.Text
+  CVarSave.FirtsRun = "true"
+  CSetting.SaveConf()
+  Form_Open()
+
+End

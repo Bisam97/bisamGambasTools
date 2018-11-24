@@ -1,0 +1,34 @@
+' Gambas class file
+
+
+Public Sub Form_Open()
+
+  LoadPokeapi_co.loadList
+  If Not Exist(User.Home & "/.dv/pkteam") Then
+     Mkdir User.Home & "/.dv/pkteam"
+  Endif
+  Print LoadPokeapi_co.PkList.Count
+End
+
+
+
+Public Sub Button1_Click()
+
+   Dim s As String
+   Dim b As Boolean = True
+   Dim iPkNr As Integer
+   
+   For iPkNr = 0 To LoadPokeapi_co.PkList.Count - 1 Step 1
+      FFirstStart.ProgressBar1.Value = iPkNr + 1 / LoadPokeapi_co.PkList.Count
+     FFirstStart.Label1.Text = "get " & LoadPokeapi_co.PkList[iPkNr]
+     If Not Exist(User.Home & "/.dv/pkteam/" & LoadPokeapi_co.PkList[iPkNr] & ".data") Then
+       LoadPokeapi_co.saveFile(iPkNr)
+     Endif
+    
+     
+     
+   Next
+   
+   FMain.Show()
+   Me.Close
+End
