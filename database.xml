@@ -116,7 +116,7 @@
 		<name>Japan Food Service/Demae Channel</name>
 		<titleID>00010008484343XX</titleID>
 		<region>5</region>
-		<version>0,1,2</version>
+		<version>1,2</version>
 		<ticket>true</ticket>
 	</SYS>
 	<SYS>
@@ -208,14 +208,14 @@
 		<name>Skyward Sword Save Data Only</name>
 		<titleID>00010000534F55XX</titleID>
 		<region>2,5,6,10</region>
-		<version>0 (Only European version),1</version>
+		<version>1</version>
 		<ticket>false</ticket>
 	</SYS>
 	<SYS>
 		<name>Skyward Sword Save Data Update Channel</name>
 		<titleID>00010001484352XX</titleID>
 		<region>2,5,6,10</region>
-		<version>0 (Only European version),1</version>
+		<version>1</version>
 		<ticket>false</ticket>
 	</SYS>
 	<SYS>
@@ -244,7 +244,7 @@
 		<name>Wii no Ma Channel</name>
 		<titleID>00010001484349XX</titleID>
 		<region>5</region>
-		<version>0,512,770,1025</version>
+		<version>512,770,1025</version>
 		<ticket>true</ticket>
 	</SYS>
 	<SYS>
@@ -258,7 +258,7 @@
 		<name>Wii System Transfer Channel</name>
 		<titleID>00010001484354XX</titleID>
 		<region>2,5,10</region>
-		<version>0,257,516</version>
+		<version>257,516</version>
 		<ticket>false</ticket>
 		<danger>This is the Wii U side of the Wii U Transfer Channel and likely won't work on a Wii.</danger>
 	</SYS>
@@ -266,7 +266,7 @@
 		<name>Wii U Transfer Channel</name>
 		<titleID>00010001484353XX</titleID>
 		<region>2,5,10</region>
-		<version>0,257,516</version>
+		<version>257,516</version>
 		<ticket>false</ticket>
 	</SYS>
 	<SYS>
